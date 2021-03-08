@@ -408,6 +408,10 @@ pwgr <- left_join(fr_pwg,feature_pwg) %>%
          species = "119")
 
 
+#
+??add_shuffle_portfolio
+??add_gap_portfolio
+??add_top_portfolio
 
 
 # RANDOM
@@ -420,7 +424,7 @@ rp5 <- problem(pu_dat5, spec_r5, cost_column = "cost", rij = puvsp_dat5) %>%
   add_min_set_objective() %>% # Minimize the cost, targets are met
   add_absolute_targets(spec_r5$target) %>% # use targets column
   add_gurobi_solver(gap = 0) %>%  # optimality gap of zero to obtain the optimal solution
-  add_gap_portfolio(number_solutions = 100) 
+  add_shuffle_portfolio(number_solutions = 100) 
 
 rs5 <- solve(rp5)
 
@@ -454,7 +458,7 @@ sr5r <- left_join(fr_sr5,feature_sr5) %>%
 
 
 
-
+  
 # RANDOM
 # 10
 pu_dat10 <- read.csv("~/GRP GAZP Dropbox/Emma Ladouceur/_Projects/Marxan/Data/Random/10/pu.csv",header=T,fill=TRUE,sep=",",na.strings=c(""," ","NA","NA ","na"))
@@ -465,7 +469,7 @@ rp10 <- problem(pu_dat10, spec_r10, cost_column = "cost", rij = puvsp_dat10) %>%
   add_min_set_objective() %>% # Minimize the cost, targets are met
   add_absolute_targets(spec_r10$target) %>% # use targets column
   add_gurobi_solver(gap = 0) %>%  # optimality gap of zero to obtain the optimal solution
-  add_gap_portfolio(number_solutions = 100) 
+  add_shuffle_portfolio(number_solutions = 100) 
 
 rs10 <- solve(rp10)
 
@@ -509,7 +513,7 @@ rp15 <- problem(pu_dat15, spec_r15, cost_column = "cost", rij = puvsp_dat15) %>%
   add_min_set_objective() %>% # Minimize the cost, targets are met
   add_absolute_targets(spec_r15$target) %>% # use targets column
   add_gurobi_solver(gap = 0) %>%  # optimality gap of zero to obtain the optimal solution
-  add_gap_portfolio(number_solutions = 100) 
+  add_shuffle_portfolio(number_solutions = 100) 
 
 rs15 <- solve(rp15)
 
@@ -553,7 +557,7 @@ rp20 <- problem(pu_dat20, spec_r20, cost_column = "cost", rij = puvsp_dat20) %>%
   add_min_set_objective() %>% # Minimize the cost, targets are met
   add_absolute_targets(spec_r20$target) %>% # use targets column
   add_gurobi_solver(gap = 0) %>%  # optimality gap of zero to obtain the optimal solution
-  add_gap_portfolio(number_solutions = 100) 
+  add_shuffle_portfolio(number_solutions = 100) 
 
 rs20 <- solve(rp20)
 
@@ -598,7 +602,7 @@ rp25 <- problem(pu_dat25, spec_r25, cost_column = "cost", rij = puvsp_dat25) %>%
   add_min_set_objective() %>% # Minimize the cost, targets are met
   add_absolute_targets(spec_r25$target) %>% # use targets column
   add_gurobi_solver(gap = 0) %>%  # optimality gap of zero to obtain the optimal solution
-  add_gap_portfolio(number_solutions = 100) 
+  add_shuffle_portfolio(number_solutions = 100) 
 
 rs25 <- solve(rp25)
 
@@ -642,7 +646,7 @@ rp30 <- problem(pu_dat30, spec_r30, cost_column = "cost", rij = puvsp_dat30) %>%
   add_min_set_objective() %>% # Minimize the cost, targets are met
   add_absolute_targets(spec_r30$target) %>% # use targets column
   add_gurobi_solver(gap = 0) %>%  # optimality gap of zero to obtain the optimal solution
-  add_gap_portfolio(number_solutions = 100) 
+  add_shuffle_portfolio(number_solutions = 100) 
 
 rs30 <- solve(rp30)
 
@@ -686,7 +690,7 @@ rp35 <- problem(pu_dat35, spec_r35, cost_column = "cost", rij = puvsp_dat35) %>%
   add_min_set_objective() %>% # Minimize the cost, targets are met
   add_absolute_targets(spec_r35$target) %>% # use targets column
   add_gurobi_solver(gap = 0) %>%  # optimality gap of zero to obtain the optimal solution
-  add_gap_portfolio(number_solutions = 100) 
+  add_shuffle_portfolio(number_solutions = 100) 
 
 rs35 <- solve(rp35)
 
@@ -731,7 +735,7 @@ rp40 <- problem(pu_dat40, spec_r40, cost_column = "cost", rij = puvsp_dat40) %>%
   add_min_set_objective() %>% # Minimize the cost, targets are met
   add_absolute_targets(spec_r40$target) %>% # use targets column
   add_gurobi_solver(gap = 0) %>%  # optimality gap of zero to obtain the optimal solution
-  add_gap_portfolio(number_solutions = 100) 
+  add_shuffle_portfolio(number_solutions = 100) 
 
 rs40 <- solve(rp40)
 
@@ -775,7 +779,7 @@ rp45 <- problem(pu_dat45, spec_r45, cost_column = "cost", rij = puvsp_dat45) %>%
   add_min_set_objective() %>% # Minimize the cost, targets are met
   add_absolute_targets(spec_r45$target) %>% # use targets column
   add_gurobi_solver(gap = 0) %>%  # optimality gap of zero to obtain the optimal solution
-  add_gap_portfolio(number_solutions = 100) 
+  add_shuffle_portfolio(number_solutions = 100) 
 
 rs45 <- solve(rp45)
 
@@ -819,7 +823,7 @@ rp50 <- problem(pu_dat50, spec_r50, cost_column = "cost", rij = puvsp_dat50) %>%
   add_min_set_objective() %>% # Minimize the cost, targets are met
   add_absolute_targets(spec_r50$target) %>% # use targets column
   add_gurobi_solver(gap = 0) %>%  # optimality gap of zero to obtain the optimal solution
-  add_gap_portfolio(number_solutions = 100) 
+  add_shuffle_portfolio(number_solutions = 100) 
 
 rs50 <- solve(rp50)
 
@@ -864,7 +868,7 @@ rp55 <- problem(pu_dat55, spec_r55, cost_column = "cost", rij = puvsp_dat55) %>%
   add_min_set_objective() %>% # Minimize the cost, targets are met
   add_absolute_targets(spec_r55$target) %>% # use targets column
   add_gurobi_solver(gap = 0) %>%  # optimality gap of zero to obtain the optimal solution
-  add_gap_portfolio(number_solutions = 100) 
+  add_shuffle_portfolio(number_solutions = 100) 
 
 rs55 <- solve(rp55)
 
@@ -908,7 +912,7 @@ rp60 <- problem(pu_dat60, spec_r60, cost_column = "cost", rij = puvsp_dat60) %>%
   add_min_set_objective() %>% # Minimize the cost, targets are met
   add_absolute_targets(spec_r60$target) %>% # use targets column
   add_gurobi_solver(gap = 0) %>%  # optimality gap of zero to obtain the optimal solution
-  add_gap_portfolio(number_solutions = 100) 
+  add_shuffle_portfolio(number_solutions = 100) 
 
 rs60 <- solve(rp60)
 
@@ -952,7 +956,7 @@ rp65 <- problem(pu_dat65, spec_r65, cost_column = "cost", rij = puvsp_dat65) %>%
   add_min_set_objective() %>% # Minimize the cost, targets are met
   add_absolute_targets(spec_r65$target) %>% # use targets column
   add_gurobi_solver(gap = 0) %>%  # optimality gap of zero to obtain the optimal solution
-  add_gap_portfolio(number_solutions = 100) 
+  add_shuffle_portfolio(number_solutions = 100) 
 
 rs65 <- solve(rp65)
 
@@ -997,7 +1001,7 @@ rp70 <- problem(pu_dat70, spec_r70, cost_column = "cost", rij = puvsp_dat70) %>%
   add_min_set_objective() %>% # Minimize the cost, targets are met
   add_absolute_targets(spec_r70$target) %>% # use targets column
   add_gurobi_solver(gap = 0) %>%  # optimality gap of zero to obtain the optimal solution
-  add_gap_portfolio(number_solutions = 100) 
+  add_shuffle_portfolio(number_solutions = 100) 
 
 rs70 <- solve(rp70)
 
@@ -1041,7 +1045,7 @@ rp75 <- problem(pu_dat75, spec_r75, cost_column = "cost", rij = puvsp_dat75) %>%
   add_min_set_objective() %>% # Minimize the cost, targets are met
   add_absolute_targets(spec_r75$target) %>% # use targets column
   add_gurobi_solver(gap = 0) %>%  # optimality gap of zero to obtain the optimal solution
-  add_gap_portfolio(number_solutions = 100) 
+  add_shuffle_portfolio(number_solutions = 100) 
 
 rs75 <- solve(rp75)
 
@@ -1084,7 +1088,7 @@ rp80 <- problem(pu_dat80, spec_r80, cost_column = "cost", rij = puvsp_dat80) %>%
   add_min_set_objective() %>% # Minimize the cost, targets are met
   add_absolute_targets(spec_r80$target) %>% # use targets column
   add_gurobi_solver(gap = 0) %>%  # optimality gap of zero to obtain the optimal solution
-  add_gap_portfolio(number_solutions = 100) 
+  add_shuffle_portfolio(number_solutions = 100) 
 
 rs80 <- solve(rp80)
 
@@ -1128,7 +1132,7 @@ rp85 <- problem(pu_dat85, spec_r85, cost_column = "cost", rij = puvsp_dat85) %>%
   add_min_set_objective() %>% # Minimize the cost, targets are met
   add_absolute_targets(spec_r85$target) %>% # use targets column
   add_gurobi_solver(gap = 0) %>%  # optimality gap of zero to obtain the optimal solution
-  add_gap_portfolio(number_solutions = 100) 
+  add_shuffle_portfolio(number_solutions = 100) 
 
 rs85 <- solve(rp85)
 
@@ -1172,7 +1176,7 @@ rp90 <- problem(pu_dat90, spec_r90, cost_column = "cost", rij = puvsp_dat90) %>%
   add_min_set_objective() %>% # Minimize the cost, targets are met
   add_absolute_targets(spec_r90$target) %>% # use targets column
   add_gurobi_solver(gap = 0) %>%  # optimality gap of zero to obtain the optimal solution
-  add_gap_portfolio(number_solutions = 100) 
+  add_shuffle_portfolio(number_solutions = 100) 
 
 rs90 <- solve(rp90)
 
@@ -1216,7 +1220,7 @@ rp95 <- problem(pu_dat95, spec_r95, cost_column = "cost", rij = puvsp_dat95) %>%
   add_min_set_objective() %>% # Minimize the cost, targets are met
   add_absolute_targets(spec_r95$target) %>% # use targets column
   add_gurobi_solver(gap = 0) %>%  # optimality gap of zero to obtain the optimal solution
-  add_gap_portfolio(number_solutions = 100) 
+  add_shuffle_portfolio(number_solutions = 100) 
 
 rs95 <- solve(rp95)
 
@@ -1260,7 +1264,7 @@ rp100 <- problem(pu_dat100, spec_r100, cost_column = "cost", rij = puvsp_dat100)
   add_min_set_objective() %>% # Minimize the cost, targets are met
   add_absolute_targets(spec_r100$target) %>% # use targets column
   add_gurobi_solver(gap = 0) %>%  # optimality gap of zero to obtain the optimal solution
-  add_gap_portfolio(number_solutions = 100) 
+  add_shuffle_portfolio(number_solutions = 100) 
 
 rs100 <- solve(rp100)
 
@@ -1304,7 +1308,7 @@ rp105 <- problem(pu_dat105, spec_r105, cost_column = "cost", rij = puvsp_dat105)
   add_min_set_objective() %>% # Minimize the cost, targets are met
   add_absolute_targets(spec_r105$target) %>% # use targets column
   add_gurobi_solver(gap = 0) %>%  # optimality gap of zero to obtain the optimal solution
-  add_gap_portfolio(number_solutions = 100) 
+  add_shuffle_portfolio(number_solutions = 100) 
 
 rs105 <- solve(rp105)
 
@@ -1349,7 +1353,7 @@ rp110 <- problem(pu_dat110, spec_r110, cost_column = "cost", rij = puvsp_dat110)
   add_min_set_objective() %>% # Minimize the cost, targets are met
   add_absolute_targets(spec_r110$target) %>% # use targets column
   add_gurobi_solver(gap = 0) %>%  # optimality gap of zero to obtain the optimal solution
-  add_gap_portfolio(number_solutions = 100) 
+  add_shuffle_portfolio(number_solutions = 100) 
 
 rs110 <- solve(rp110)
 
@@ -1393,7 +1397,7 @@ rp115 <- problem(pu_dat115, spec_r115, cost_column = "cost", rij = puvsp_dat115)
   add_min_set_objective() %>% # Minimize the cost, targets are met
   add_absolute_targets(spec_r115$target) %>% # use targets column
   add_gurobi_solver(gap = 0) %>%  # optimality gap of zero to obtain the optimal solution
-  add_gap_portfolio(number_solutions = 100) 
+  add_shuffle_portfolio(number_solutions = 100) 
 
 rs115 <- solve(rp115)
 
@@ -1437,7 +1441,7 @@ rp120 <- problem(pu_dat120, spec_r120, cost_column = "cost", rij = puvsp_dat120)
   add_min_set_objective() %>% # Minimize the cost, targets are met
   add_absolute_targets(spec_r120$target) %>% # use targets column
   add_gurobi_solver(gap = 0) %>%  # optimality gap of zero to obtain the optimal solution
-  add_gap_portfolio(number_solutions = 100) 
+  add_shuffle_portfolio(number_solutions = 100) 
 
 rs120 <- solve(rp120)
 
@@ -1481,7 +1485,7 @@ rp125 <- problem(pu_dat125, spec_r125, cost_column = "cost", rij = puvsp_dat125)
   add_min_set_objective() %>% # Minimize the cost, targets are met
   add_absolute_targets(spec_r125$target) %>% # use targets column
   add_gurobi_solver(gap = 0) %>%  # optimality gap of zero to obtain the optimal solution
-  add_gap_portfolio(number_solutions = 100) 
+  add_shuffle_portfolio(number_solutions = 100) 
 
 rs125 <- solve(rp125)
 
@@ -1529,9 +1533,11 @@ write.csv(objective.features,"~/GRP GAZP Dropbox/Emma Ladouceur/_Projects/Marxan
 # Random Features 
 random.features <- bind_rows(sr5r,sr10r,sr15r,sr20r,sr25r,sr30r,sr35r,sr40r,sr45r,sr50r,sr55r,sr60r,sr65r,sr70r,sr75r,sr80r,sr85r,sr90r,sr95r,sr100r,sr105r,sr110r,sr115r,sr120r,sr125r)
 
+
 head(random.features)
 
 write.csv(random.features,"~/GRP GAZP Dropbox/Emma Ladouceur/_Projects/Marxan/Data/random.features.csv")
+
 
 # objective features +  random features = master features
 master.features <- bind_rows(objective.features,random.features)
@@ -1541,7 +1547,6 @@ dmf <- distinct(master.features,objective, species)
 dmf
 
 write.csv(master.features,"~/GRP GAZP Dropbox/Emma Ladouceur/_Projects/Marxan/Data/master.features.csv")
-
 
 #  Data for Figure 1
 random_dat <- bind_rows(sr5_s,sr10_s,sr15_s,sr20_s,sr25_s,sr30_s,sr35_s,sr40_s,sr45_s,sr50_s,sr55_s,sr60_s,sr65_s,sr70_s,sr75_s,sr80_s,sr85_s,sr90_s,sr95_s,sr100_s,sr105_s,sr110_s,sr115_s,sr120_s,sr125_s)
@@ -1571,10 +1576,10 @@ master.features <- master.features %>%
 head(master.features)
 
 ob.feats <-  master.features %>%  filter( !objective == "Random") %>%
- left_join( bind_rows(comp_spec,bfly_spec,bird_spec,dom_spec,prichf_spec,prichg_spec,pwf_spec,pwg_spec) 
+ left_join( bind_rows(comp_spec,bfly_spec,bird_spec,dom_spec,prichf_spec,prichg_spec,pwf_spec,pwg_spec) #split
  ) %>%
-  mutate( pres = ifelse(ob.feats$absolute_held == 0, '0',
-                        ifelse(ob.feats$absolute_held >= 1 , '1', 'other')),
+  mutate( pres = ifelse(absolute_held == 0, '0',
+                        ifelse(absolute_held >= 1 , '1', 'other')),
           value = "1"
           )
 
@@ -1598,26 +1603,29 @@ levels(summ.feats$category)
 
 write.csv(summ.feats,"~/GRP GAZP Dropbox/Emma Ladouceur/_Projects/Marxan/Data/summary_objective_features.csv")
 
+random.features$species <- as.numeric(random.features$species)
 
 # Random
-random.feat <- master.features %>% filter( objective == "Random") %>%
+random.feat <- master.features %>% filter( objective == "Random") %>% # change this back to master.features
   left_join( bind_rows(spec_r5,spec_r10,spec_r15,spec_r20,spec_r25,spec_r30,spec_r35,spec_r40,spec_r45,spec_r50,spec_r55,spec_r60,spec_r65,spec_r70,spec_r75,spec_r80,spec_r85,spec_r90,spec_r95,spec_r100,spec_r105,spec_r110,spec_r115,spec_r120,spec_r125)
  ) %>%
   mutate ( name = fct_recode( name, Species = "Random") ,
-           pres = ifelse(random.feats$absolute_held ==0, '0',
-                            ifelse(random.feats$absolute_held >=1, '1', 'other')),
+           pres = ifelse(absolute_held ==0, '0',
+                            ifelse(absolute_held >=1, '1', 'other')),
            value = "1")
 
 head(random.feat)
+
 write.csv(random.feat,"~/GRP GAZP Dropbox/Emma Ladouceur/_Projects/Marxan/Data/random_features2.csv")
 
 random.feat$pres<-as.numeric(random.feat$pres)
 random.feat$value<-as.numeric(random.feat$value)
 
-random.summ.feats<- random.feat %>% group_by(category, objective, solution, species) %>%
+random.summ.feats <- random.feat %>% group_by(category, objective, solution, species) %>%
   summarise(absolute_held= sum(absolute_held),
             absolute_abundance=sum(absolute_abundance),
-            target=sum(target),pres=sum(pres), 
+            target=sum(target),
+            pres=sum(pres), 
             value=sum(value)) %>%
   mutate( percent_targs = ((pres/value)*100)  )
 
@@ -1627,7 +1635,7 @@ random.summ.feats <- random.summ.feats %>%
   filter(category != "Species") %>% 
   droplevels()
 
-View(random.summ.feats)
+head(random.summ.feats)
 write.csv(random.summ.feats,"~/GRP GAZP Dropbox/Emma Ladouceur/_Projects/Marxan/Data/summary_random_features.csv")
 
 
@@ -1636,7 +1644,7 @@ random.summ.feat<- random.summ.feats %>% group_by(category, objective, species) 
             lower.held = quantile(percent_targs, probs = 0.025),
             upper.held = quantile(percent_targs, probs = 0.975))
 
-View(random.summ.feat)
+head(random.summ.feat)
 
 write.csv(random.summ.feat,"~/GRP GAZP Dropbox/Emma Ladouceur/_Projects/Marxan/Data/summary_random_features2.csv")
 
@@ -1651,7 +1659,7 @@ master_new <- read.csv("~/GRP GAZP Dropbox/Emma Ladouceur/_Projects/Marxan/Data/
 master_dat <- read.csv("~/GRP GAZP Dropbox/Emma Ladouceur/_Projects/Marxan/Data/master_dat.csv",header=T,fill=TRUE,sep=",",na.strings=c(""," ","NA","NA ","na"))
 
 
-View(master_dat)
+head(master_dat)
 
 master_dat$objective<- as.factor(master_dat$objective)
 levels(master_dat$objective)
@@ -1664,7 +1672,7 @@ sf_p <- master_dat %>%  filter(objective == "Bird (n=5)"  | objective == "Butter
 
 
 
-View(sf_p)
+head(sf_p)
 
 colnames(master_new)
 
@@ -1689,7 +1697,7 @@ s_dat <- solution_dat %>% as_tibble() %>%
            objective == "Pairwise Butterfly Div Family (n=47)" | objective == "Pairwise Butterfly Div Genus (n=119)") %>%
   dplyr::select(s,objective,selection)  %>% spread(objective, selection)
 
-View(s_dat)
+head(s_dat)
 
 master_dat3 <- master_dat2 %>% left_join(s_dat, by =("s"))
 

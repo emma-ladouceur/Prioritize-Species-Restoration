@@ -32,6 +32,13 @@ levels(dat1$objective)
 
 dat1$objective <- factor(dat1$objective, levels=c("Bird (n=5)","Plant Rich Family (n=34)","Lepidoptera Relationship (n=35)", "Comprehensive (n=37)", "Dominants (n=37)",  "Pairwise Lepidoptera + Plant Rich Family (n=47)" , "Plant Rich Genus (n=115)","Pairwise Lepidoptera + Plant Rich Genus (n=119)", "Random"))
 
+# alternative ordering
+dat1$objective <- factor(dat1$objective, levels=c( "Comprehensive (n=37)", "Bird (n=5)","Lepidoptera Relationship (n=35)", "Pairwise Lepidoptera + Plant Rich Family (n=47)" ,"Pairwise Lepidoptera + Plant Rich Genus (n=119)",
+                                                  "Dominants (n=37)",  "Plant Rich Family (n=34)", "Plant Rich Genus (n=115)", "Random"))
+#alt color orders
+# scale_color_manual(values=c("#D95F02","#E7298A","#7570B3","#16A08CFF", "#1F78B4","#66A61E","#E6AB02","#15983DFF","#666666")) +
+#   scale_fill_manual(values=c("#D95F02","#E7298A","#7570B3","#16A08CFF", "#1F78B4","#66A61E","#E6AB02","#15983DFF","#666666")) +
+
 ggplot(dat1,aes(x=objective, y=totalcf, color=objective),alpha=0.6,dotsize=0.5) + 
   geom_violin(aes(color = NA, fill=objective), alpha=0.4,trim = FALSE,color=NA) +
   geom_jitter(position = position_jitter(0.2),alpha=0.6) +
@@ -39,9 +46,12 @@ ggplot(dat1,aes(x=objective, y=totalcf, color=objective),alpha=0.6,dotsize=0.5) 
   stat_summary(fun.data="mean_sdl",  fun.args = list(mult=1), 
                fun.y=mean, geom="pointrange", size=0.6,  fill="black",color="black",alpha=0.6) + 
   labs(x = '',y = 'Attribute Sum',fill='Objective',color='Objective') + 
-  scale_color_manual(values=c("#E7298A","#66A61E","#7570B3","#D95F02","#E6AB02","#16A08CFF" ,"#15983DFF","#1F78B4","#666666")) +
-  scale_fill_manual(values=c("#E7298A","#66A61E","#7570B3","#D95F02","#E6AB02","#16A08CFF" ,"#15983DFF","#1F78B4","#666666")) +
-  theme_classic() + theme(legend.position="none") + scale_x_discrete(labels = function(x) str_wrap(x, width = 10))
+  # scale_color_manual(values=c("#E7298A","#66A61E","#7570B3","#D95F02","#E6AB02","#16A08CFF" ,"#15983DFF","#1F78B4","#666666")) +
+  # scale_fill_manual(values=c("#E7298A","#66A61E","#7570B3","#D95F02","#E6AB02","#16A08CFF" ,"#15983DFF","#1F78B4","#666666")) +
+  scale_color_manual(values=c("#D95F02","#E7298A","#7570B3","#16A08CFF", "#1F78B4","#E6AB02","#66A61E","#15983DFF","#666666")) +
+     scale_fill_manual(values=c("#D95F02","#E7298A","#7570B3","#16A08CFF", "#1F78B4","#E6AB02","#66A61E","#15983DFF","#666666")) +
+  theme_classic() + theme(legend.position="none",
+                          text = element_text(size=(20))) + scale_x_discrete(labels = function(x) str_wrap(x, width = 10))
 
 # Expanded Fig 2 : Fig S1
 
@@ -88,8 +98,13 @@ importance_dat <- master_dat %>%  mutate( Importance = ifelse(master_dat$sf == 0
   filter(solution_n == "solution_1") %>% filter(!objective == "Random")
 
 
-importance_dat$objective <- factor(importance_dat$objective, levels=c("Bird (n=5)","Plant Rich Family (n=34)","Lepidoptera Relationship (n=35)", "Comprehensive (n=37)", "Dominants (n=37)",  "Pairwise Lepidoptera + Plant Rich Family (n=47)" , "Plant Rich Genus (n=115)","Pairwise Lepidoptera + Plant Rich Genus (n=119)"))
-importance_dat$Importance <- factor(importance_dat$Importance, levels=c("Redundant","Variable","Irreplaceable"))
+#importance_dat$objective <- factor(importance_dat$objective, levels=c("Bird (n=5)","Plant Rich Family (n=34)","Lepidoptera Relationship (n=35)", "Comprehensive (n=37)", "Dominants (n=37)",  "Pairwise Lepidoptera + Plant Rich Family (n=47)" , "Plant Rich Genus (n=115)","Pairwise Lepidoptera + Plant Rich Genus (n=119)"))
+
+importance_dat$objective <- factor(importance_dat$objective, levels=c( "Comprehensive (n=37)", "Bird (n=5)","Lepidoptera Relationship (n=35)", "Pairwise Lepidoptera + Plant Rich Family (n=47)" ,"Pairwise Lepidoptera + Plant Rich Genus (n=119)",
+                                                   "Dominants (n=37)",  "Plant Rich Family (n=34)", "Plant Rich Genus (n=115)"))
+
+
+importance_dat$Importance <- factor(importance_dat$Importance, levels=c("Irreplaceable","Variable", "Redundant"))
 
 # Figure 3
 ggplot(importance_dat,aes(x=Importance, y=totalcf,color=Importance),alpha=0.6,dotsize=0.5) + 
@@ -98,12 +113,13 @@ ggplot(importance_dat,aes(x=Importance, y=totalcf,color=Importance),alpha=0.6,do
   geom_jitter(position = position_jitter(0.2),alpha=0.6) +
   stat_summary(fun.data="mean_sdl",  fun.args = list(mult=1), 
                fun.y=mean, geom="pointrange", size=0.6,  fill="black",color="black",alpha=0.6) + 
-  labs(x = '',y = 'Attribute Sum',fill='Importance',color='Importance') + 
-  scale_color_manual(values=c("#751029FF","#52194CFF","#7F8624FF")) +
-  scale_fill_manual(values=c("#751029FF","#52194CFF","#7F8624FF")) +
+  labs(x = '',y = 'Attribute Sum',fill='',color='') + 
+  scale_color_manual(values=c("#7F8624FF" ,"#52194CFF","#751029FF")) +
+  scale_fill_manual(values=c("#7F8624FF","#52194CFF","#751029FF")) +
   theme_classic() + theme(legend.position="bottom") + theme(axis.title.x=element_blank(),
                                                             axis.text.x=element_blank(),
-                                                            axis.ticks.x=element_blank())
+                                                            axis.ticks.x=element_blank(),
+                                                            text = element_text(size=(14)))
 
 
 # FIGURE 4
@@ -117,19 +133,24 @@ rdata.l$category <- factor(rdata.l$category, levels=c( "Bird Trophic","Bird Herb
 
 edata$category <- factor(edata$category, levels=c( "Bird Trophic","Bird Herbivory", "Bird Shelter", "Dispersal Syndrome",  "Lepidoptera Pollinator", "Lepidoptera Herbivory","Pollination Syndrome", "Mammal Herbivory", "Nitrogen Fixation", "Flowering Month","Plant Rich Genus","Plant Rich Family"))
 
-edata$objective <- factor(edata$objective, levels=c("Bird (n=5)","Plant Rich Family (n=34)","Lepidoptera Relationship (n=35)", "Comprehensive (n=37)", "Dominants (n=37)","Pairwise Lepidoptera + Plant Rich Family (n=47)" , "Plant Rich Genus (n=115)","Pairwise Lepidoptera + Plant Rich Genus (n=119)", "Random"))
+#edata$objective <- factor(edata$objective, levels=c("Bird (n=5)","Plant Rich Family (n=34)","Lepidoptera Relationship (n=35)", "Comprehensive (n=37)", "Dominants (n=37)","Pairwise Lepidoptera + Plant Rich Family (n=47)" , "Plant Rich Genus (n=115)","Pairwise Lepidoptera + Plant Rich Genus (n=119)", "Random"))
+
+edata$objective <- factor(edata$objective, levels=c( "Comprehensive (n=37)", "Bird (n=5)","Lepidoptera Relationship (n=35)", "Pairwise Lepidoptera + Plant Rich Family (n=47)" ,"Pairwise Lepidoptera + Plant Rich Genus (n=119)",
+                                                                       "Dominants (n=37)",  "Plant Rich Family (n=34)", "Plant Rich Genus (n=115)", "Random"))
 
 
 # FIGURE 4
 ggplot() +
-  geom_jitter(data=rdata.l, aes(x=species, y=percent_targs),color="#666666", size=5,width = 0.5, height = 0.5, alpha=0.4) +
-  geom_jitter(data=edata, aes(x=species, y=percent_targs,color=objective), size=6,width = 0.5, height = 0.5, alpha=0.8) +
-  scale_colour_manual(values=c("#E7298A","#66A61E","#7570B3","#D95F02","#E6AB02","#16A08CFF","#15983DFF","#1F78B4","#666666")) + 
+  geom_jitter(data=rdata.l, aes(x=species, y=percent_targs),color="#666666", size=5,width = 1, height = 0.5, alpha=0.4) +
+  geom_jitter(data=edata, aes(x=species, y=percent_targs,color=objective), size=6,width = 1, height = 0.5, alpha=0.8) +
+  #scale_colour_manual(values=c("#E7298A","#66A61E","#7570B3","#D95F02","#E6AB02","#16A08CFF","#15983DFF","#1F78B4","#666666")) + 
+  scale_color_manual(values=c("#D95F02","#E7298A","#7570B3","#16A08CFF", "#1F78B4","#E6AB02","#66A61E","#15983DFF","#666666")) +
   facet_grid(. ~ category)+ facet_wrap(~category, labeller = labeller(groupwrap = label_wrap_gen(10)))+
   labs(x = 'Number of Plant Species',y = 'Percentage of Targets Met',color='Objective') + 
   theme_bw() + theme(panel.grid.major = element_blank(), panel.grid.minor = element_blank(), 
                      strip.background = element_rect(colour="black", fill="white"),legend.position="bottom")+ 
-  theme(axis.text.x=element_text(angle=45, hjust=1)) 
+  theme(axis.text.x=element_text(angle=45, hjust=1),
+        text = element_text(size=(20))) +   guides(col = guide_legend(ncol = 3))
 
 
 # Figure S2 : Random Cloud
