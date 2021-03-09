@@ -74,7 +74,10 @@ dat2 <- dat1 %>%  filter(!objective == "Bird (n=5)"  ) %>% filter( !objective ==
 
 head(dat2)
 dat2$solution_amount <- factor(dat2$solution_amount, levels=c("5",".5","10","15","20","25","30","34","35",".35","37",".37","39","40","45","47","50","55","60","65","70","75","80","85","90","95","100","105","110","115",".115","116","119","120","121","125"))
-dat2$objective <- factor(dat2$objective, levels=c("Bird (n=5)","Plant Rich Family (n=34)","Lepidoptera Relationship (n=35)", "Comprehensive (n=37)", "Dominants (n=37)",  "Pairwise Lepidoptera + Plant Rich Family (n=47)" , "Plant Rich Genus (n=115)","Pairwise Lepidoptera + Plant Rich Genus (n=119)", "Random"))
+#dat2$objective <- factor(dat2$objective, levels=c("Bird (n=5)","Plant Rich Family (n=34)","Lepidoptera Relationship (n=35)", "Comprehensive (n=37)", "Dominants (n=37)",  "Pairwise Lepidoptera + Plant Rich Family (n=47)" , "Plant Rich Genus (n=115)","Pairwise Lepidoptera + Plant Rich Genus (n=119)", "Random"))
+
+dat2$objective <- factor(dat2$objective, levels=c( "Comprehensive (n=37)", "Bird (n=5)","Lepidoptera Relationship (n=35)", "Pairwise Lepidoptera + Plant Rich Family (n=47)" ,"Pairwise Lepidoptera + Plant Rich Genus (n=119)",
+                                                   "Dominants (n=37)",  "Plant Rich Family (n=34)", "Plant Rich Genus (n=115)", "Random"))
 
 ggplot(dat2,aes(x=solution_amount, y=totalcf, color=objective),alpha=0.6,dotsize=0.5) + 
   geom_violin(aes(color = NA, fill=objective), alpha=0.4,trim = FALSE,color=NA) +
@@ -82,9 +85,12 @@ ggplot(dat2,aes(x=solution_amount, y=totalcf, color=objective),alpha=0.6,dotsize
   stat_summary(fun.data="mean_sdl",  fun.args = list(mult=1), 
                fun.y=mean, geom="pointrange", size=0.6,  fill="black",color="black",alpha=0.6) + 
   labs(x = '',y = 'Attribute Sum',fill='Objective',color='Objective') + 
-  scale_color_manual(values=c("#E7298A","#66A61E","#7570B3","#D95F02","#E6AB02","#16A08CFF" ,"#15983DFF","#1F78B4","#666666")) +
-  scale_fill_manual(values=c("#E7298A","#66A61E","#7570B3","#D95F02","#E6AB02","#16A08CFF" ,"#15983DFF","#1F78B4","#666666")) +
-  theme_classic() + theme(legend.position="bottom") #+ scale_x_discrete(labels = function(x) str_wrap(x, width = 10))
+  # scale_color_manual(values=c("#E7298A","#66A61E","#7570B3","#D95F02","#E6AB02","#16A08CFF" ,"#15983DFF","#1F78B4","#666666")) +
+  # scale_fill_manual(values=c("#E7298A","#66A61E","#7570B3","#D95F02","#E6AB02","#16A08CFF" ,"#15983DFF","#1F78B4","#666666")) +
+  scale_color_manual(values=c("#D95F02","#E7298A","#7570B3","#16A08CFF", "#1F78B4","#E6AB02","#66A61E","#15983DFF","#666666")) +
+  scale_fill_manual(values=c("#D95F02","#E7298A","#7570B3","#16A08CFF", "#1F78B4","#E6AB02","#66A61E","#15983DFF","#666666")) +
+  theme_classic() + theme(legend.position="bottom",
+                          text = element_text(size=(20))) +   guides(col = guide_legend(ncol = 3))
 
 
 # Figure 3 : Irreplace-ability
@@ -120,6 +126,8 @@ ggplot(importance_dat,aes(x=Importance, y=totalcf,color=Importance),alpha=0.6,do
                                                             axis.text.x=element_blank(),
                                                             axis.ticks.x=element_blank(),
                                                             text = element_text(size=(14)))
+#LANDSCAPE 8.50 X 12
+
 
 
 # FIGURE 4
