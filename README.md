@@ -1,5 +1,5 @@
 
-# Prioritize-species-restoration
+# Prioritize-Species-Restoration
 
 Prioritizing plant species for seed or planting mixes in terretrial ecological restoration. Here, we use the prioritizr package to efficiently find the smallest number of plant species that met the target based-objectives in restoration treatment species mixes.  We used the ‘minimum-set’ problem formulation which is commonly applied to spatially-explicit decision making that cost-efficiently meet targets for conservation features (e.g. habitats, species ranges, or ecological processes), and apply it to our non-spatial problem.
 
