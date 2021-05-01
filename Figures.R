@@ -2,15 +2,15 @@
 
 # In this script we:
 # _________________________________________________________
-# ############# Visualize solutions ###################
-# ############# Quantitatively compare ################
+# #############     Visualize solutions     ###############
+# #############     Quantitatively compare  ###############
+# #############     Produce Figures         ###############
 # _________________________________________________________
 
-# load libraries
+# prackages
 library(tidyverse)
 library(ggplot2)
 library(viridis)
-
 
 
 solution_dat <- read.csv("~/GRP GAZP Dropbox/Emma Ladouceur/_Projects/Marxan/Data/solution_dat.csv",header=T,fill=TRUE,sep=",",na.strings=c(""," ","NA","NA ","na"))
