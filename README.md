@@ -16,7 +16,7 @@ This method can be performed in R, using the [prioritizr](https://prioritizr.net
 
 **1_puvssp_wrangle.csv** This wrangled data is already provided for you, but this wrangle script is provided to demonstrate how to get data into required formats.
 
-**problems_solutions.R** This script takes data for each objective, creates prioritizr problems, and solves to create solutions for this paper. data is the wrangled into formats needed for analysis and Figures.
+**2_problems_solutions.R** This script takes data for each objective, creates prioritizr problems, and solves to create solutions for this paper. data is the wrangled into formats needed for analysis and Figures.
 
-**Figures.R** This script produces figures for the associated paper.
+**3_Figures.R** This script produces figures for the associated paper.
 
