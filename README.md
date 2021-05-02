@@ -19,7 +19,7 @@ Each folder contains the following data for each objective. Each folder is named
 
 **puvsp.csv** This is the 'plant species-trait/attribute' matrix in long format. 
 
-**spec.csv** This is a list of 'attributes'conservation features' (terminology from prioritizr and MARXAN documentations). In this case conservation features are plant traits/atrributes. This contains the conservation feature/attribute name (name), the conservation feature id (id), the target (target- in prioritizr and MARXAN documentation), broad category assigned to each conservation feature attribute (category), and the objective.
+**spec.csv** This is a list of 'conservation features' (terminology from prioritizr and MARXAN documentations). In this case conservation features are plant traits/atrributes. This contains the conservation feature/attribute name (name), the conservation feature id (id), the target (target- see prioritizr and MARXAN documentation), broad category assigned to each conservation feature attribute (category), and the objective name.
 
 
 
