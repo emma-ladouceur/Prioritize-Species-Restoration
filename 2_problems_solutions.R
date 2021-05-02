@@ -13,7 +13,9 @@
 library(tidyverse)
 library(prioritizr)
 library(data.table)
-library(gurobi)
+# please see prioritizr documentation for information on solvers, and installing them
+# here we use gurobi as a solver
+library(gurobi) 
 library(slam)
 library(purrr)
 
@@ -32,15 +34,13 @@ comp_spec <- read.csv("~/GRP GAZP Dropbox/Emma Ladouceur/_Projects/Marxan/Data/C
 # pu vs sp - planning units vs features matrix, or in this case a plant species- attributes matrix- in long format
 puvsp_dat <- read.csv("~/GRP GAZP Dropbox/Emma Ladouceur/_Projects/Marxan/Data/Comprehensive/puvsp.csv",header=T,fill=TRUE,sep=",",na.strings=c(""," ","NA","NA ","na"))
 
-??add_gap_portfolio
-?? add_gurobi_solver
 
 # create the problem
 p1 <- problem(pu_dat, comp_spec, cost_column = "cost", rij = puvsp_dat) %>%
   add_min_set_objective() %>% # Minimize the cost, targets are met
   add_absolute_targets(comp_spec$target) %>% # use targets column
   add_gurobi_solver(gap = 0)  %>% # optimality gap of zero to obtain the optimal solution
-  add_gap_portfolio(number_solutions = 100) 
+  add_gap_portfolio(number_solutions = 100)  # ask for 100 solutions
 
 # a bit of an example on exploring the problem here
 # print problem
