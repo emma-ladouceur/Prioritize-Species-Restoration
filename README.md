@@ -6,9 +6,11 @@ Prioritizing plant species for seed or planting mixes in terretrial ecological r
 Below we detail the Datasets and Code Provided to replicate this method.
 
 ### Data
-All that is really needed for this analysis is a plant species list of appropriate species from the regional species pool, appropriate for the target habitat for use is a restoration species mix, and a list of associated plant traits, or attributes associated with those plant species, to form a plant species-trait matrix. The next step is to get the data into the right format for analysis. There are multiple options for this data formatting, and here we take the approach to data formatting that can also be used in MARXAN. The data unique to  each objective is provided in this format. Methods for formatting data for these  applications is well-documented for each sotfware platform mentioned here, and adapting these formats to this application is detailed in the supplementary information of this paper. 
+All that is really needed for this analysis is a plant species list of appropriate species from the regional species pool, appropriate for the target habitat for use in a restoration species mix, and a list of associated plant traits, or attributes associated with those plant species, to form a plant species-trait matrix. The next step is to get the data into the right format for analysis. There are multiple options for this data formatting, and here we take the approach to data formatting that can also be used in MARXAN. The data unique to  each objective is provided in this format. Methods for formatting data for these  applications is well-documented for each sotfware platform mentioned here, and adapting these formats to this non-spatial application is detailed in the supplementary information of this paper. 
 
 **Table_S1.csv** These data are the total plant species-attribute matrix used for this analysis.
+
+#### Folders
 
 
 ### R Scripts
