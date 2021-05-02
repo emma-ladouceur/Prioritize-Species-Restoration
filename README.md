@@ -11,12 +11,18 @@ All that is really needed for this analysis is a plant species list of appropria
 **Table_S1.csv** These data are the total plant species-attribute matrix used for this analysis.
 
 #### Folders
+Each folder contains the following data for each objective. Each folder is named intuitively after each objective.
+**pu.csv**  This is a list of planning units and planning unit id. In this case, planning units are plant species. The contains the planning unit name (s), planning unit id (id), the cost of each planning unit, the status (in prioritizr/MARXAN) documentation), and the total number of conservation features/atributes of each plant species (totalcf).
+**puvsp_w.csv** This is  a 'plant species-trait/attribute' matrix.
+**puvsp.csv** This is the 'plant species-trait./attribute' matrix is long format.
+**spec.csv** This is a list of 'attributes'conservation features' (terminology from prioritizr and MARXAN documentations). In this case conservation features are plant traits/atrributes. This contains the conservation feature/attribute name (name), the conservation feature id (id), the target (target- in prioritizr and MARXAN documentation), broad category assigned to each conservation feature attribute (category), and the objective.
+
 
 
 ### R Scripts
 This method can be performed in R, using the [prioritizr](https://prioritizr.net/) package, *AND* can also be performed in [MARXAN](https://marxansolutions.org/). In the associated paper we describe the prioritizr method, and we present the associated code here. R Script file names- which are listed below, are numbered and listed in the order they should be used.
 
-**1_puvssp_wrangle.csv** This wrangled data is already provided for you, but this wrangle script is provided to demonstrate how to get data into required formats.
+**1_puvssp_wrangle.csv** This wrangled data is already provided for you, but this wrangle script is provided to demonstrate how to get data into required formats. This just converts *puvsp_w.csv* into *puvsp.csv* 
 
 **2_problems_solutions.R** This script takes data for each objective, creates prioritizr problems, and solves to create solutions for this paper. data is the wrangled into formats needed for analysis and Figures.
 
