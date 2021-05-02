@@ -12,9 +12,13 @@ All that is really needed for this analysis is a plant species list of appropria
 
 #### Folders
 Each folder contains the following data for each objective. Each folder is named intuitively after each objective.
+
 **pu.csv**  This is a list of planning units and planning unit id. In this case, planning units are plant species. The contains the planning unit name (s), planning unit id (id), the cost of each planning unit, the status (in prioritizr/MARXAN) documentation), and the total number of conservation features/atributes of each plant species (totalcf).
+
 **puvsp_w.csv** This is  a 'plant species-trait/attribute' matrix.
+
 **puvsp.csv** This is the 'plant species-trait./attribute' matrix is long format.
+
 **spec.csv** This is a list of 'attributes'conservation features' (terminology from prioritizr and MARXAN documentations). In this case conservation features are plant traits/atrributes. This contains the conservation feature/attribute name (name), the conservation feature id (id), the target (target- in prioritizr and MARXAN documentation), broad category assigned to each conservation feature attribute (category), and the objective.
 
 
