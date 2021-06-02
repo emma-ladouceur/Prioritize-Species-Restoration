@@ -26,7 +26,7 @@ dat1 <- master_dat %>% as_tibble() %>%
   filter(solution != 0) 
 
 
-# Figure 2
+# Figure 3
 dat1$objective<- as.factor(dat1$objective)
 levels(dat1$objective)
 
@@ -42,12 +42,9 @@ dat1$objective <- factor(dat1$objective, levels=c( "Comprehensive (n=37)", "Bird
 ggplot(dat1,aes(x=objective, y=totalcf, color=objective),alpha=0.6,dotsize=0.5) + 
   geom_violin(aes(color = NA, fill=objective), alpha=0.4,trim = FALSE,color=NA) +
   geom_jitter(position = position_jitter(0.2),alpha=0.6) +
-  #geom_dotplot(aes(fill=objective), alpha=0.5,dotsize=0.5,binaxis = "y",  stackdir = "center", stackratio=0.5) + 
   stat_summary(fun.data="mean_sdl",  fun.args = list(mult=1), 
                fun.y=mean, geom="pointrange", size=0.6,  fill="black",color="black",alpha=0.6) + 
   labs(x = '',y = 'Attribute Sum',fill='Objective',color='Objective') + 
-  # scale_color_manual(values=c("#E7298A","#66A61E","#7570B3","#D95F02","#E6AB02","#16A08CFF" ,"#15983DFF","#1F78B4","#666666")) +
-  # scale_fill_manual(values=c("#E7298A","#66A61E","#7570B3","#D95F02","#E6AB02","#16A08CFF" ,"#15983DFF","#1F78B4","#666666")) +
   scale_color_manual(values=c("#D95F02","#E7298A","#7570B3","#16A08CFF", "#1F78B4","#E6AB02","#66A61E","#15983DFF","#666666")) +
      scale_fill_manual(values=c("#D95F02","#E7298A","#7570B3","#16A08CFF", "#1F78B4","#E6AB02","#66A61E","#15983DFF","#666666")) +
   annotate("text", x= 3, y=77, label= "Prioritized Objectives", size= 5) +
@@ -66,7 +63,7 @@ ggplot(dat1,aes(x=objective, y=totalcf, color=objective),alpha=0.6,dotsize=0.5) 
 
 # LANDSCAPE 9X14
 
-# Expanded Fig 2 : Fig S1
+# Expanded Fig 2 : Figure S1
 
 head(dat1)
 dat1$solution_amount <- as.factor(as.character(dat1$solution_amount))
@@ -105,7 +102,7 @@ ggplot(dat2,aes(x=solution_amount, y=totalcf, color=objective),alpha=0.6,dotsize
 
 # LANDSCAPE 9X14
 
-# Figure 3 : Irreplaceability
+# Figure 4 : Irreplaceability
 head(master_dat)
 master_dat$sf <- as.numeric(master_dat$sf)
 importance_dat <- master_dat %>%  mutate( Importance = ifelse(master_dat$sf == 0, 'Redundant',
@@ -141,7 +138,7 @@ ggplot(importance_dat,aes(x=Importance, y=totalcf,color=Importance),alpha=0.6,do
 
 #LANDSCAPE 8.50 X 12
 
-# FIGURE 4
+# FIGURE 5
 # MIXED LAYERS CLOUD + RANDOM MEAN + QUANTILES 
 edata<- read.table("~/GRP GAZP Dropbox/Emma Ladouceur/_Projects/Marxan/Data/summary_objective_features.csv",header=T,fill=TRUE,sep=",",na.strings=c(""," ","NA","NA ","na"))
 rdata<- read.table("~/GRP GAZP Dropbox/Emma Ladouceur/_Projects/Marxan/Data/summary_random_features2.csv",header=T,fill=TRUE,sep=",",na.strings=c(""," ","NA","NA ","na"))
@@ -158,7 +155,7 @@ edata$objective <- factor(edata$objective, levels=c( "Comprehensive (n=37)", "Bi
                                                                        "Dominants (n=37)",  "Plant Rich Family (n=34)", "Plant Rich Genus (n=115)", "Random"))
 
 
-# FIGURE 4
+# FIGURE 5
 ggplot() +
   geom_jitter(data=rdata.l, aes(x=species, y=percent_targs),color="#666666", size=5,width = 1, height = 0.5, alpha=0.4) +
   geom_jitter(data=edata, aes(x=species, y=percent_targs,color=objective), size=6,width = 1, height = 0.5, alpha=0.8) +

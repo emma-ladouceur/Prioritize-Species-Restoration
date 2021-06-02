@@ -10,14 +10,14 @@
 
 
 # load packages
-library(tidyverse)
-library(prioritizr)
 library(data.table)
+library(tidyverse)
+library(purrr)
+library(prioritizr)
 # please see prioritizr documentation for information on solvers, and installing them
 # here we use gurobi as a solver
 library(gurobi) 
 library(slam)
-library(purrr)
 
 
 # _________________________________________________________
