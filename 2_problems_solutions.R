@@ -13,10 +13,8 @@
 library(data.table)
 library(tidyverse)
 library(purrr)
-library(prioritizr)
-# please see prioritizr documentation for information on solvers, and installing them
-# here we use gurobi as a solver
-library(gurobi) 
+library(prioritizr) # please see prioritizr documentation for information on solvers, and installing them
+library(gurobi) # here we use gurobi as a solver
 library(slam)
 
 
@@ -25,14 +23,16 @@ library(slam)
 # ############# PROBLEMS & SOLUTIONS ###################
 # ########################################################
 # _________________________________________________________
+# set working directory
+setwd("~/Dropbox/Projects/Prioritizr/Data/")
 
 # Comprehensive Objective
 # tabular planning unit (pu) data, which is in this case, a list of plants
-pu_dat <- read.csv("~/GRP GAZP Dropbox/Emma Ladouceur/_Projects/Marxan/Data/Comprehensive/pu.csv",header=T,fill=TRUE,sep=",",na.strings=c(""," ","NA","NA ","na"))
+pu_dat <- read.csv("/InputData/Comprehensive/pu.csv",header=T,fill=TRUE,sep=",",na.strings=c(""," ","NA","NA ","na"))
 # feature data, which in this case, is our plant species attributes
-comp_spec <- read.csv("~/GRP GAZP Dropbox/Emma Ladouceur/_Projects/Marxan/Data/Comprehensive/spec.csv",header=T,fill=TRUE,sep=",",na.strings=c(""," ","NA","NA ","na"))
+comp_spec <- read.csv("/InputData/Comprehensive/spec.csv",header=T,fill=TRUE,sep=",",na.strings=c(""," ","NA","NA ","na"))
 # pu vs sp - planning units vs features matrix, or in this case a plant species- attributes matrix- in long format
-puvsp_dat <- read.csv("~/GRP GAZP Dropbox/Emma Ladouceur/_Projects/Marxan/Data/Comprehensive/puvsp.csv",header=T,fill=TRUE,sep=",",na.strings=c(""," ","NA","NA ","na"))
+puvsp_dat <- read.csv("/InputData/Comprehensive/puvsp.csv",header=T,fill=TRUE,sep=",",na.strings=c(""," ","NA","NA ","na"))
 
 
 # create the problem
@@ -87,11 +87,11 @@ compr <- left_join(fr_comp,feature_comp) %>%
 
 # Lepidoptera Relationships
 # planning units
-pu_dat <- read.csv("~/GRP GAZP Dropbox/Emma Ladouceur/_Projects/Marxan/Data/Butterfly/pu.csv",header=T,fill=TRUE,sep=",",na.strings=c(""," ","NA","NA ","na"))
+pu_dat <- read.csv("/InputData/Butterfly/pu.csv",header=T,fill=TRUE,sep=",",na.strings=c(""," ","NA","NA ","na"))
 # feature data
-bfly_spec <- read.csv("~/GRP GAZP Dropbox/Emma Ladouceur/_Projects/Marxan/Data/Butterfly/spec.csv",header=T,fill=TRUE,sep=",",na.strings=c(""," ","NA","NA ","na"))
+bfly_spec <- read.csv("/InputData/Butterfly/spec.csv",header=T,fill=TRUE,sep=",",na.strings=c(""," ","NA","NA ","na"))
 # pu v sp
-puvsp_dat <- read.csv("~/GRP GAZP Dropbox/Emma Ladouceur/_Projects/Marxan/Data/Butterfly/puvsp.csv",header=T,fill=TRUE,sep=",",na.strings=c(""," ","NA","NA ","na"))
+puvsp_dat <- read.csv("/InputData/Butterfly/puvsp.csv",header=T,fill=TRUE,sep=",",na.strings=c(""," ","NA","NA ","na"))
 
 # create problem
 p2 <- problem(pu_dat, bfly_spec, cost_column = "cost", rij = puvsp_dat) %>%
@@ -133,11 +133,11 @@ head(bflyr)
 
 
 # Birds
-pu_dat <- read.csv("~/GRP GAZP Dropbox/Emma Ladouceur/_Projects/Marxan/Data/Bird/pu.csv",header=T,fill=TRUE,sep=",",na.strings=c(""," ","NA","NA ","na"))
+pu_dat <- read.csv("/InputData/Bird/pu.csv",header=T,fill=TRUE,sep=",",na.strings=c(""," ","NA","NA ","na"))
 # feature data
-bird_spec <- read.csv("~/GRP GAZP Dropbox/Emma Ladouceur/_Projects/Marxan/Data/Bird/spec.csv",header=T,fill=TRUE,sep=",",na.strings=c(""," ","NA","NA ","na"))
+bird_spec <- read.csv("/InputData/Bird/spec.csv",header=T,fill=TRUE,sep=",",na.strings=c(""," ","NA","NA ","na"))
 
-puvsp_dat <- read.csv("~/GRP GAZP Dropbox/Emma Ladouceur/_Projects/Marxan/Data/Bird/puvsp.csv",header=T,fill=TRUE,sep=",",na.strings=c(""," ","NA","NA ","na"))
+puvsp_dat <- read.csv("/InputData/Bird/puvsp.csv",header=T,fill=TRUE,sep=",",na.strings=c(""," ","NA","NA ","na"))
 
 # create problem
 p3 <- problem(pu_dat, bird_spec, cost_column = "cost", rij = puvsp_dat) %>%
@@ -178,11 +178,11 @@ head(birdr)
 
 
 # Dominants
-pu_dat <- read.csv("~/GRP GAZP Dropbox/Emma Ladouceur/_Projects/Marxan/Data/Dominants/pu.csv",header=T,fill=TRUE,sep=",",na.strings=c(""," ","NA","NA ","na"))
+pu_dat <- read.csv("/InputData/Dominants/pu.csv",header=T,fill=TRUE,sep=",",na.strings=c(""," ","NA","NA ","na"))
 # feature data
-dom_spec <- read.csv("~/GRP GAZP Dropbox/Emma Ladouceur/_Projects/Marxan/Data/Dominants/spec.csv",header=T,fill=TRUE,sep=",",na.strings=c(""," ","NA","NA ","na"))
+dom_spec <- read.csv("/InputData/Dominants/spec.csv",header=T,fill=TRUE,sep=",",na.strings=c(""," ","NA","NA ","na"))
 
-puvsp_dat <- read.csv("~/GRP GAZP Dropbox/Emma Ladouceur/_Projects/Marxan/Data/Dominants/puvsp.csv",header=T,fill=TRUE,sep=",",na.strings=c(""," ","NA","NA ","na"))
+puvsp_dat <- read.csv("/InputData/Dominants/puvsp.csv",header=T,fill=TRUE,sep=",",na.strings=c(""," ","NA","NA ","na"))
 
 # create problem
 p4 <- problem(pu_dat, dom_spec, cost_column = "cost", rij = puvsp_dat) %>%
@@ -223,11 +223,11 @@ head(domr)
 
 
 # Plant Rich Family 
-pu_dat <- read.csv("~/GRP GAZP Dropbox/Emma Ladouceur/_Projects/Marxan/Data/PDiv_Fam/pu.csv",header=T,fill=TRUE,sep=",",na.strings=c(""," ","NA","NA ","na"))
+pu_dat <- read.csv("/InputData/PDiv_Fam/pu.csv",header=T,fill=TRUE,sep=",",na.strings=c(""," ","NA","NA ","na"))
 # feature data
-prichf_spec <- read.csv("~/GRP GAZP Dropbox/Emma Ladouceur/_Projects/Marxan/Data/PDiv_Fam/spec.csv",header=T,fill=TRUE,sep=",",na.strings=c(""," ","NA","NA ","na"))
+prichf_spec <- read.csv("/InputData/PDiv_Fam/spec.csv",header=T,fill=TRUE,sep=",",na.strings=c(""," ","NA","NA ","na"))
 
-puvsp_dat <- read.csv("~/GRP GAZP Dropbox/Emma Ladouceur/_Projects/Marxan/Data/PDiv_Fam/puvsp.csv",header=T,fill=TRUE,sep=",",na.strings=c(""," ","NA","NA ","na"))
+puvsp_dat <- read.csv("/InputData/PDiv_Fam/puvsp.csv",header=T,fill=TRUE,sep=",",na.strings=c(""," ","NA","NA ","na"))
 
 
 # create problem
@@ -270,11 +270,11 @@ head(prichfr)
 
 
 # Plant Rich Genus
-pu_dat <- read.csv("~/GRP GAZP Dropbox/Emma Ladouceur/_Projects/Marxan/Data/PDiv_Gen/pu.csv",header=T,fill=TRUE,sep=",",na.strings=c(""," ","NA","NA ","na"))
+pu_dat <- read.csv("/InputData/PDiv_Gen/pu.csv",header=T,fill=TRUE,sep=",",na.strings=c(""," ","NA","NA ","na"))
 # feature data
-prichg_spec <- read.csv("~/GRP GAZP Dropbox/Emma Ladouceur/_Projects/Marxan/Data/PDiv_Gen/spec.csv",header=T,fill=TRUE,sep=",",na.strings=c(""," ","NA","NA ","na"))
+prichg_spec <- read.csv("/InputData/PDiv_Gen/spec.csv",header=T,fill=TRUE,sep=",",na.strings=c(""," ","NA","NA ","na"))
 
-puvsp_dat <- read.csv("~/GRP GAZP Dropbox/Emma Ladouceur/_Projects/Marxan/Data/PDiv_Gen/puvsp.csv",header=T,fill=TRUE,sep=",",na.strings=c(""," ","NA","NA ","na"))
+puvsp_dat <- read.csv("/InputData/PDiv_Gen/puvsp.csv",header=T,fill=TRUE,sep=",",na.strings=c(""," ","NA","NA ","na"))
 
 
 # create problem
@@ -317,11 +317,11 @@ head(prichgr)
 
 
 # Pairwise Lepidoptera + Plant Rich Family
-pu_dat <- read.csv("~/GRP GAZP Dropbox/Emma Ladouceur/_Projects/Marxan/Data/PW_Butterfly_F/pu.csv",header=T,fill=TRUE,sep=",",na.strings=c(""," ","NA","NA ","na"))
+pu_dat <- read.csv("/InputData/PW_Butterfly_F/pu.csv",header=T,fill=TRUE,sep=",",na.strings=c(""," ","NA","NA ","na"))
 # feature data
-pwf_spec <- read.csv("~/GRP GAZP Dropbox/Emma Ladouceur/_Projects/Marxan/Data/PW_Butterfly_F/spec.csv",header=T,fill=TRUE,sep=",",na.strings=c(""," ","NA","NA ","na"))
+pwf_spec <- read.csv("/InputData/PW_Butterfly_F/spec.csv",header=T,fill=TRUE,sep=",",na.strings=c(""," ","NA","NA ","na"))
 
-puvsp_dat <- read.csv("~/GRP GAZP Dropbox/Emma Ladouceur/_Projects/Marxan/Data/PW_Butterfly_F/puvsp.csv",header=T,fill=TRUE,sep=",",na.strings=c(""," ","NA","NA ","na"))
+puvsp_dat <- read.csv("/InputData/PW_Butterfly_F/puvsp.csv",header=T,fill=TRUE,sep=",",na.strings=c(""," ","NA","NA ","na"))
 
 
 # create problem
@@ -364,11 +364,11 @@ head(pwfr)
 
 
 # Pairwise Lepidoptera + Plant Rich Genus
-pu_dat <- read.csv("~/GRP GAZP Dropbox/Emma Ladouceur/_Projects/Marxan/Data/PW_Butterfly_G/pu.csv",header=T,fill=TRUE,sep=",",na.strings=c(""," ","NA","NA ","na"))
+pu_dat <- read.csv("/InputData/PW_Butterfly_G/pu.csv",header=T,fill=TRUE,sep=",",na.strings=c(""," ","NA","NA ","na"))
 # feature data
-pwg_spec <- read.csv("~/GRP GAZP Dropbox/Emma Ladouceur/_Projects/Marxan/Data/PW_Butterfly_G/spec.csv",header=T,fill=TRUE,sep=",",na.strings=c(""," ","NA","NA ","na"))
+pwg_spec <- read.csv("/InputData/PW_Butterfly_G/spec.csv",header=T,fill=TRUE,sep=",",na.strings=c(""," ","NA","NA ","na"))
 
-puvsp_dat <- read.csv("~/GRP GAZP Dropbox/Emma Ladouceur/_Projects/Marxan/Data/PW_Butterfly_G/puvsp.csv",header=T,fill=TRUE,sep=",",na.strings=c(""," ","NA","NA ","na"))
+puvsp_dat <- read.csv("/InputData/PW_Butterfly_G/puvsp.csv",header=T,fill=TRUE,sep=",",na.strings=c(""," ","NA","NA ","na"))
 
 # create problem
 p8 <- problem(pu_dat, pwg_spec, cost_column = "cost", rij = puvsp_dat) %>%
@@ -416,9 +416,9 @@ pwgr <- left_join(fr_pwg,feature_pwg) %>%
 
 # RANDOM
 # 5
-pu_dat5 <- read.csv("~/GRP GAZP Dropbox/Emma Ladouceur/_Projects/Marxan/Data/Random/5/pu.csv",header=T,fill=TRUE,sep=",",na.strings=c(""," ","NA","NA ","na"))
-spec_r5 <- read.csv("~/GRP GAZP Dropbox/Emma Ladouceur/_Projects/Marxan/Data/Random/5/spec.csv",header=T,fill=TRUE,sep=",",na.strings=c(""," ","NA","NA ","na"))
-puvsp_dat5 <- read.csv("~/GRP GAZP Dropbox/Emma Ladouceur/_Projects/Marxan/Data/Random/5/puvsp.csv",header=T,fill=TRUE,sep=",",na.strings=c(""," ","NA","NA ","na"))
+pu_dat5 <- read.csv("/InputData/Random/5/pu.csv",header=T,fill=TRUE,sep=",",na.strings=c(""," ","NA","NA ","na"))
+spec_r5 <- read.csv("/InputData/Random/5/spec.csv",header=T,fill=TRUE,sep=",",na.strings=c(""," ","NA","NA ","na"))
+puvsp_dat5 <- read.csv("/InputData/Random/5/puvsp.csv",header=T,fill=TRUE,sep=",",na.strings=c(""," ","NA","NA ","na"))
 
 rp5 <- problem(pu_dat5, spec_r5, cost_column = "cost", rij = puvsp_dat5) %>%
   add_min_set_objective() %>% # Minimize the cost, targets are met
@@ -461,9 +461,9 @@ sr5r <- left_join(fr_sr5,feature_sr5) %>%
   
 # RANDOM
 # 10
-pu_dat10 <- read.csv("~/GRP GAZP Dropbox/Emma Ladouceur/_Projects/Marxan/Data/Random/10/pu.csv",header=T,fill=TRUE,sep=",",na.strings=c(""," ","NA","NA ","na"))
-spec_r10 <- read.csv("~/GRP GAZP Dropbox/Emma Ladouceur/_Projects/Marxan/Data/Random/10/spec.csv",header=T,fill=TRUE,sep=",",na.strings=c(""," ","NA","NA ","na"))
-puvsp_dat10 <- read.csv("~/GRP GAZP Dropbox/Emma Ladouceur/_Projects/Marxan/Data/Random/10/puvsp.csv",header=T,fill=TRUE,sep=",",na.strings=c(""," ","NA","NA ","na"))
+pu_dat10 <- read.csv("/InputData/Random/10/pu.csv",header=T,fill=TRUE,sep=",",na.strings=c(""," ","NA","NA ","na"))
+spec_r10 <- read.csv("/InputData/Random/10/spec.csv",header=T,fill=TRUE,sep=",",na.strings=c(""," ","NA","NA ","na"))
+puvsp_dat10 <- read.csv("/InputData/Random/10/puvsp.csv",header=T,fill=TRUE,sep=",",na.strings=c(""," ","NA","NA ","na"))
 
 rp10 <- problem(pu_dat10, spec_r10, cost_column = "cost", rij = puvsp_dat10) %>%
   add_min_set_objective() %>% # Minimize the cost, targets are met
@@ -505,9 +505,9 @@ head(sr10r)
 
 # RANDOM
 # 15
-pu_dat15 <- read.csv("~/GRP GAZP Dropbox/Emma Ladouceur/_Projects/Marxan/Data/Random/15/pu.csv",header=T,fill=TRUE,sep=",",na.strings=c(""," ","NA","NA ","na"))
-spec_r15 <- read.csv("~/GRP GAZP Dropbox/Emma Ladouceur/_Projects/Marxan/Data/Random/15/spec.csv",header=T,fill=TRUE,sep=",",na.strings=c(""," ","NA","NA ","na"))
-puvsp_dat15 <- read.csv("~/GRP GAZP Dropbox/Emma Ladouceur/_Projects/Marxan/Data/Random/15/puvsp.csv",header=T,fill=TRUE,sep=",",na.strings=c(""," ","NA","NA ","na"))
+pu_dat15 <- read.csv("/InputData/Random/15/pu.csv",header=T,fill=TRUE,sep=",",na.strings=c(""," ","NA","NA ","na"))
+spec_r15 <- read.csv("/InputData/Random/15/spec.csv",header=T,fill=TRUE,sep=",",na.strings=c(""," ","NA","NA ","na"))
+puvsp_dat15 <- read.csv("/InputData/Random/15/puvsp.csv",header=T,fill=TRUE,sep=",",na.strings=c(""," ","NA","NA ","na"))
 
 rp15 <- problem(pu_dat15, spec_r15, cost_column = "cost", rij = puvsp_dat15) %>%
   add_min_set_objective() %>% # Minimize the cost, targets are met
@@ -549,9 +549,9 @@ head(sr15r)
 
 # RANDOM
 # 20
-pu_dat20 <- read.csv("~/GRP GAZP Dropbox/Emma Ladouceur/_Projects/Marxan/Data/Random/20/pu.csv",header=T,fill=TRUE,sep=",",na.strings=c(""," ","NA","NA ","na"))
-spec_r20 <- read.csv("~/GRP GAZP Dropbox/Emma Ladouceur/_Projects/Marxan/Data/Random/20/spec.csv",header=T,fill=TRUE,sep=",",na.strings=c(""," ","NA","NA ","na"))
-puvsp_dat20 <- read.csv("~/GRP GAZP Dropbox/Emma Ladouceur/_Projects/Marxan/Data/Random/20/puvsp.csv",header=T,fill=TRUE,sep=",",na.strings=c(""," ","NA","NA ","na"))
+pu_dat20 <- read.csv("/InputData/Random/20/pu.csv",header=T,fill=TRUE,sep=",",na.strings=c(""," ","NA","NA ","na"))
+spec_r20 <- read.csv("/InputData/Random/20/spec.csv",header=T,fill=TRUE,sep=",",na.strings=c(""," ","NA","NA ","na"))
+puvsp_dat20 <- read.csv("/InputData/Random/20/puvsp.csv",header=T,fill=TRUE,sep=",",na.strings=c(""," ","NA","NA ","na"))
 
 rp20 <- problem(pu_dat20, spec_r20, cost_column = "cost", rij = puvsp_dat20) %>%
   add_min_set_objective() %>% # Minimize the cost, targets are met
@@ -594,9 +594,9 @@ head(sr20r)
 
 # RANDOM
 # 25
-pu_dat25 <- read.csv("~/GRP GAZP Dropbox/Emma Ladouceur/_Projects/Marxan/Data/Random/25/pu.csv",header=T,fill=TRUE,sep=",",na.strings=c(""," ","NA","NA ","na"))
-spec_r25 <- read.csv("~/GRP GAZP Dropbox/Emma Ladouceur/_Projects/Marxan/Data/Random/25/spec.csv",header=T,fill=TRUE,sep=",",na.strings=c(""," ","NA","NA ","na"))
-puvsp_dat25 <- read.csv("~/GRP GAZP Dropbox/Emma Ladouceur/_Projects/Marxan/Data/Random/25/puvsp.csv",header=T,fill=TRUE,sep=",",na.strings=c(""," ","NA","NA ","na"))
+pu_dat25 <- read.csv("/InputData/Random/25/pu.csv",header=T,fill=TRUE,sep=",",na.strings=c(""," ","NA","NA ","na"))
+spec_r25 <- read.csv("/InputData/Random/25/spec.csv",header=T,fill=TRUE,sep=",",na.strings=c(""," ","NA","NA ","na"))
+puvsp_dat25 <- read.csv("/InputData/Random/25/puvsp.csv",header=T,fill=TRUE,sep=",",na.strings=c(""," ","NA","NA ","na"))
 
 rp25 <- problem(pu_dat25, spec_r25, cost_column = "cost", rij = puvsp_dat25) %>%
   add_min_set_objective() %>% # Minimize the cost, targets are met
@@ -638,9 +638,9 @@ head(sr25r)
 
 # RANDOM
 # 30
-pu_dat30 <- read.csv("~/GRP GAZP Dropbox/Emma Ladouceur/_Projects/Marxan/Data/Random/30/pu.csv",header=T,fill=TRUE,sep=",",na.strings=c(""," ","NA","NA ","na"))
-spec_r30 <- read.csv("~/GRP GAZP Dropbox/Emma Ladouceur/_Projects/Marxan/Data/Random/30/spec.csv",header=T,fill=TRUE,sep=",",na.strings=c(""," ","NA","NA ","na"))
-puvsp_dat30 <- read.csv("~/GRP GAZP Dropbox/Emma Ladouceur/_Projects/Marxan/Data/Random/30/puvsp.csv",header=T,fill=TRUE,sep=",",na.strings=c(""," ","NA","NA ","na"))
+pu_dat30 <- read.csv("/InputData/Random/30/pu.csv",header=T,fill=TRUE,sep=",",na.strings=c(""," ","NA","NA ","na"))
+spec_r30 <- read.csv("/InputData/Random/30/spec.csv",header=T,fill=TRUE,sep=",",na.strings=c(""," ","NA","NA ","na"))
+puvsp_dat30 <- read.csv("/InputData/Random/30/puvsp.csv",header=T,fill=TRUE,sep=",",na.strings=c(""," ","NA","NA ","na"))
 
 rp30 <- problem(pu_dat30, spec_r30, cost_column = "cost", rij = puvsp_dat30) %>%
   add_min_set_objective() %>% # Minimize the cost, targets are met
@@ -682,9 +682,9 @@ head(sr30r)
 
 # RANDOM
 # 35
-pu_dat35 <- read.csv("~/GRP GAZP Dropbox/Emma Ladouceur/_Projects/Marxan/Data/Random/35/pu.csv",header=T,fill=TRUE,sep=",",na.strings=c(""," ","NA","NA ","na"))
-spec_r35 <- read.csv("~/GRP GAZP Dropbox/Emma Ladouceur/_Projects/Marxan/Data/Random/35/spec.csv",header=T,fill=TRUE,sep=",",na.strings=c(""," ","NA","NA ","na"))
-puvsp_dat35 <- read.csv("~/GRP GAZP Dropbox/Emma Ladouceur/_Projects/Marxan/Data/Random/35/puvsp.csv",header=T,fill=TRUE,sep=",",na.strings=c(""," ","NA","NA ","na"))
+pu_dat35 <- read.csv("/InputData/Random/35/pu.csv",header=T,fill=TRUE,sep=",",na.strings=c(""," ","NA","NA ","na"))
+spec_r35 <- read.csv("/InputData/Random/35/spec.csv",header=T,fill=TRUE,sep=",",na.strings=c(""," ","NA","NA ","na"))
+puvsp_dat35 <- read.csv("/InputData/Random/35/puvsp.csv",header=T,fill=TRUE,sep=",",na.strings=c(""," ","NA","NA ","na"))
 
 rp35 <- problem(pu_dat35, spec_r35, cost_column = "cost", rij = puvsp_dat35) %>%
   add_min_set_objective() %>% # Minimize the cost, targets are met
@@ -727,9 +727,9 @@ head(sr35r)
 
 # RANDOM
 # 40
-pu_dat40 <- read.csv("~/GRP GAZP Dropbox/Emma Ladouceur/_Projects/Marxan/Data/Random/40/pu.csv",header=T,fill=TRUE,sep=",",na.strings=c(""," ","NA","NA ","na"))
-spec_r40 <- read.csv("~/GRP GAZP Dropbox/Emma Ladouceur/_Projects/Marxan/Data/Random/40/spec.csv",header=T,fill=TRUE,sep=",",na.strings=c(""," ","NA","NA ","na"))
-puvsp_dat40 <- read.csv("~/GRP GAZP Dropbox/Emma Ladouceur/_Projects/Marxan/Data/Random/40/puvsp.csv",header=T,fill=TRUE,sep=",",na.strings=c(""," ","NA","NA ","na"))
+pu_dat40 <- read.csv("/InputData/Random/40/pu.csv",header=T,fill=TRUE,sep=",",na.strings=c(""," ","NA","NA ","na"))
+spec_r40 <- read.csv("/InputData/Random/40/spec.csv",header=T,fill=TRUE,sep=",",na.strings=c(""," ","NA","NA ","na"))
+puvsp_dat40 <- read.csv("/InputData/Random/40/puvsp.csv",header=T,fill=TRUE,sep=",",na.strings=c(""," ","NA","NA ","na"))
 
 rp40 <- problem(pu_dat40, spec_r40, cost_column = "cost", rij = puvsp_dat40) %>%
   add_min_set_objective() %>% # Minimize the cost, targets are met
@@ -771,9 +771,9 @@ head(sr40r)
 
 # RANDOM
 # 45
-pu_dat45 <- read.csv("~/GRP GAZP Dropbox/Emma Ladouceur/_Projects/Marxan/Data/Random/45/pu.csv",header=T,fill=TRUE,sep=",",na.strings=c(""," ","NA","NA ","na"))
-spec_r45 <- read.csv("~/GRP GAZP Dropbox/Emma Ladouceur/_Projects/Marxan/Data/Random/45/spec.csv",header=T,fill=TRUE,sep=",",na.strings=c(""," ","NA","NA ","na"))
-puvsp_dat45 <- read.csv("~/GRP GAZP Dropbox/Emma Ladouceur/_Projects/Marxan/Data/Random/45/puvsp.csv",header=T,fill=TRUE,sep=",",na.strings=c(""," ","NA","NA ","na"))
+pu_dat45 <- read.csv("/InputData/Random/45/pu.csv",header=T,fill=TRUE,sep=",",na.strings=c(""," ","NA","NA ","na"))
+spec_r45 <- read.csv("/InputData/Random/45/spec.csv",header=T,fill=TRUE,sep=",",na.strings=c(""," ","NA","NA ","na"))
+puvsp_dat45 <- read.csv("/InputData/Random/45/puvsp.csv",header=T,fill=TRUE,sep=",",na.strings=c(""," ","NA","NA ","na"))
 
 rp45 <- problem(pu_dat45, spec_r45, cost_column = "cost", rij = puvsp_dat45) %>%
   add_min_set_objective() %>% # Minimize the cost, targets are met
@@ -815,9 +815,9 @@ head(sr45r)
 
 # RANDOM
 # 50
-pu_dat50 <- read.csv("~/GRP GAZP Dropbox/Emma Ladouceur/_Projects/Marxan/Data/Random/50/pu.csv",header=T,fill=TRUE,sep=",",na.strings=c(""," ","NA","NA ","na"))
-spec_r50 <- read.csv("~/GRP GAZP Dropbox/Emma Ladouceur/_Projects/Marxan/Data/Random/50/spec.csv",header=T,fill=TRUE,sep=",",na.strings=c(""," ","NA","NA ","na"))
-puvsp_dat50 <- read.csv("~/GRP GAZP Dropbox/Emma Ladouceur/_Projects/Marxan/Data/Random/50/puvsp.csv",header=T,fill=TRUE,sep=",",na.strings=c(""," ","NA","NA ","na"))
+pu_dat50 <- read.csv("/InputData/Random/50/pu.csv",header=T,fill=TRUE,sep=",",na.strings=c(""," ","NA","NA ","na"))
+spec_r50 <- read.csv("/InputData/Random/50/spec.csv",header=T,fill=TRUE,sep=",",na.strings=c(""," ","NA","NA ","na"))
+puvsp_dat50 <- read.csv("/InputData/Random/50/puvsp.csv",header=T,fill=TRUE,sep=",",na.strings=c(""," ","NA","NA ","na"))
 
 rp50 <- problem(pu_dat50, spec_r50, cost_column = "cost", rij = puvsp_dat50) %>%
   add_min_set_objective() %>% # Minimize the cost, targets are met
@@ -860,9 +860,9 @@ head(sr50r)
 
 # RANDOM
 # 55
-pu_dat55 <- read.csv("~/GRP GAZP Dropbox/Emma Ladouceur/_Projects/Marxan/Data/Random/55/pu.csv",header=T,fill=TRUE,sep=",",na.strings=c(""," ","NA","NA ","na"))
-spec_r55 <- read.csv("~/GRP GAZP Dropbox/Emma Ladouceur/_Projects/Marxan/Data/Random/55/spec.csv",header=T,fill=TRUE,sep=",",na.strings=c(""," ","NA","NA ","na"))
-puvsp_dat55 <- read.csv("~/GRP GAZP Dropbox/Emma Ladouceur/_Projects/Marxan/Data/Random/55/puvsp.csv",header=T,fill=TRUE,sep=",",na.strings=c(""," ","NA","NA ","na"))
+pu_dat55 <- read.csv("/InputData/Random/55/pu.csv",header=T,fill=TRUE,sep=",",na.strings=c(""," ","NA","NA ","na"))
+spec_r55 <- read.csv("/InputData/Random/55/spec.csv",header=T,fill=TRUE,sep=",",na.strings=c(""," ","NA","NA ","na"))
+puvsp_dat55 <- read.csv("/InputData/Random/55/puvsp.csv",header=T,fill=TRUE,sep=",",na.strings=c(""," ","NA","NA ","na"))
 
 rp55 <- problem(pu_dat55, spec_r55, cost_column = "cost", rij = puvsp_dat55) %>%
   add_min_set_objective() %>% # Minimize the cost, targets are met
@@ -904,9 +904,9 @@ head(sr55r)
 
 # RANDOM
 # 60
-pu_dat60 <- read.csv("~/GRP GAZP Dropbox/Emma Ladouceur/_Projects/Marxan/Data/Random/60/pu.csv",header=T,fill=TRUE,sep=",",na.strings=c(""," ","NA","NA ","na"))
-spec_r60 <- read.csv("~/GRP GAZP Dropbox/Emma Ladouceur/_Projects/Marxan/Data/Random/60/spec.csv",header=T,fill=TRUE,sep=",",na.strings=c(""," ","NA","NA ","na"))
-puvsp_dat60 <- read.csv("~/GRP GAZP Dropbox/Emma Ladouceur/_Projects/Marxan/Data/Random/60/puvsp.csv",header=T,fill=TRUE,sep=",",na.strings=c(""," ","NA","NA ","na"))
+pu_dat60 <- read.csv("/InputData/Random/60/pu.csv",header=T,fill=TRUE,sep=",",na.strings=c(""," ","NA","NA ","na"))
+spec_r60 <- read.csv("/InputData/Random/60/spec.csv",header=T,fill=TRUE,sep=",",na.strings=c(""," ","NA","NA ","na"))
+puvsp_dat60 <- read.csv("/InputData/Random/60/puvsp.csv",header=T,fill=TRUE,sep=",",na.strings=c(""," ","NA","NA ","na"))
 
 rp60 <- problem(pu_dat60, spec_r60, cost_column = "cost", rij = puvsp_dat60) %>%
   add_min_set_objective() %>% # Minimize the cost, targets are met
@@ -948,9 +948,9 @@ head(sr60r)
 
 # RANDOM
 # 65
-pu_dat65 <- read.csv("~/GRP GAZP Dropbox/Emma Ladouceur/_Projects/Marxan/Data/Random/65/pu.csv",header=T,fill=TRUE,sep=",",na.strings=c(""," ","NA","NA ","na"))
-spec_r65 <- read.csv("~/GRP GAZP Dropbox/Emma Ladouceur/_Projects/Marxan/Data/Random/65/spec.csv",header=T,fill=TRUE,sep=",",na.strings=c(""," ","NA","NA ","na"))
-puvsp_dat65 <- read.csv("~/GRP GAZP Dropbox/Emma Ladouceur/_Projects/Marxan/Data/Random/65/puvsp.csv",header=T,fill=TRUE,sep=",",na.strings=c(""," ","NA","NA ","na"))
+pu_dat65 <- read.csv("/InputData/Random/65/pu.csv",header=T,fill=TRUE,sep=",",na.strings=c(""," ","NA","NA ","na"))
+spec_r65 <- read.csv("/InputData/Random/65/spec.csv",header=T,fill=TRUE,sep=",",na.strings=c(""," ","NA","NA ","na"))
+puvsp_dat65 <- read.csv("/InputData/Random/65/puvsp.csv",header=T,fill=TRUE,sep=",",na.strings=c(""," ","NA","NA ","na"))
 
 rp65 <- problem(pu_dat65, spec_r65, cost_column = "cost", rij = puvsp_dat65) %>%
   add_min_set_objective() %>% # Minimize the cost, targets are met
@@ -993,9 +993,9 @@ head(sr65r)
 
 # RANDOM
 # 70
-pu_dat70 <- read.csv("~/GRP GAZP Dropbox/Emma Ladouceur/_Projects/Marxan/Data/Random/70/pu.csv",header=T,fill=TRUE,sep=",",na.strings=c(""," ","NA","NA ","na"))
-spec_r70 <- read.csv("~/GRP GAZP Dropbox/Emma Ladouceur/_Projects/Marxan/Data/Random/70/spec.csv",header=T,fill=TRUE,sep=",",na.strings=c(""," ","NA","NA ","na"))
-puvsp_dat70 <- read.csv("~/GRP GAZP Dropbox/Emma Ladouceur/_Projects/Marxan/Data/Random/70/puvsp.csv",header=T,fill=TRUE,sep=",",na.strings=c(""," ","NA","NA ","na"))
+pu_dat70 <- read.csv("/InputData/Random/70/pu.csv",header=T,fill=TRUE,sep=",",na.strings=c(""," ","NA","NA ","na"))
+spec_r70 <- read.csv("/InputData/Random/70/spec.csv",header=T,fill=TRUE,sep=",",na.strings=c(""," ","NA","NA ","na"))
+puvsp_dat70 <- read.csv("/InputData/Random/70/puvsp.csv",header=T,fill=TRUE,sep=",",na.strings=c(""," ","NA","NA ","na"))
 
 rp70 <- problem(pu_dat70, spec_r70, cost_column = "cost", rij = puvsp_dat70) %>%
   add_min_set_objective() %>% # Minimize the cost, targets are met
@@ -1037,9 +1037,9 @@ head(sr70r)
 
 # RANDOM
 # 75
-pu_dat75 <- read.csv("~/GRP GAZP Dropbox/Emma Ladouceur/_Projects/Marxan/Data/Random/75/pu.csv",header=T,fill=TRUE,sep=",",na.strings=c(""," ","NA","NA ","na"))
-spec_r75 <- read.csv("~/GRP GAZP Dropbox/Emma Ladouceur/_Projects/Marxan/Data/Random/75/spec.csv",header=T,fill=TRUE,sep=",",na.strings=c(""," ","NA","NA ","na"))
-puvsp_dat75 <- read.csv("~/GRP GAZP Dropbox/Emma Ladouceur/_Projects/Marxan/Data/Random/75/puvsp.csv",header=T,fill=TRUE,sep=",",na.strings=c(""," ","NA","NA ","na"))
+pu_dat75 <- read.csv("/InputData/Random/75/pu.csv",header=T,fill=TRUE,sep=",",na.strings=c(""," ","NA","NA ","na"))
+spec_r75 <- read.csv("/InputData/Random/75/spec.csv",header=T,fill=TRUE,sep=",",na.strings=c(""," ","NA","NA ","na"))
+puvsp_dat75 <- read.csv("/InputData/Random/75/puvsp.csv",header=T,fill=TRUE,sep=",",na.strings=c(""," ","NA","NA ","na"))
 
 rp75 <- problem(pu_dat75, spec_r75, cost_column = "cost", rij = puvsp_dat75) %>%
   add_min_set_objective() %>% # Minimize the cost, targets are met
@@ -1080,9 +1080,9 @@ head(sr75r)
 
 # RANDOM
 # 80
-pu_dat80 <- read.csv("~/GRP GAZP Dropbox/Emma Ladouceur/_Projects/Marxan/Data/Random/80/pu.csv",header=T,fill=TRUE,sep=",",na.strings=c(""," ","NA","NA ","na"))
-spec_r80 <- read.csv("~/GRP GAZP Dropbox/Emma Ladouceur/_Projects/Marxan/Data/Random/80/spec.csv",header=T,fill=TRUE,sep=",",na.strings=c(""," ","NA","NA ","na"))
-puvsp_dat80 <- read.csv("~/GRP GAZP Dropbox/Emma Ladouceur/_Projects/Marxan/Data/Random/80/puvsp.csv",header=T,fill=TRUE,sep=",",na.strings=c(""," ","NA","NA ","na"))
+pu_dat80 <- read.csv("/InputData/Random/80/pu.csv",header=T,fill=TRUE,sep=",",na.strings=c(""," ","NA","NA ","na"))
+spec_r80 <- read.csv("/InputData/Random/80/spec.csv",header=T,fill=TRUE,sep=",",na.strings=c(""," ","NA","NA ","na"))
+puvsp_dat80 <- read.csv("/InputData/Random/80/puvsp.csv",header=T,fill=TRUE,sep=",",na.strings=c(""," ","NA","NA ","na"))
 
 rp80 <- problem(pu_dat80, spec_r80, cost_column = "cost", rij = puvsp_dat80) %>%
   add_min_set_objective() %>% # Minimize the cost, targets are met
@@ -1124,9 +1124,9 @@ head(sr80r)
 
 # RANDOM
 # 85
-pu_dat85 <- read.csv("~/GRP GAZP Dropbox/Emma Ladouceur/_Projects/Marxan/Data/Random/85/pu.csv",header=T,fill=TRUE,sep=",",na.strings=c(""," ","NA","NA ","na"))
-spec_r85 <- read.csv("~/GRP GAZP Dropbox/Emma Ladouceur/_Projects/Marxan/Data/Random/85/spec.csv",header=T,fill=TRUE,sep=",",na.strings=c(""," ","NA","NA ","na"))
-puvsp_dat85 <- read.csv("~/GRP GAZP Dropbox/Emma Ladouceur/_Projects/Marxan/Data/Random/85/puvsp.csv",header=T,fill=TRUE,sep=",",na.strings=c(""," ","NA","NA ","na"))
+pu_dat85 <- read.csv("/InputData/Random/85/pu.csv",header=T,fill=TRUE,sep=",",na.strings=c(""," ","NA","NA ","na"))
+spec_r85 <- read.csv("/InputData/Random/85/spec.csv",header=T,fill=TRUE,sep=",",na.strings=c(""," ","NA","NA ","na"))
+puvsp_dat85 <- read.csv("/InputData/Random/85/puvsp.csv",header=T,fill=TRUE,sep=",",na.strings=c(""," ","NA","NA ","na"))
 
 rp85 <- problem(pu_dat85, spec_r85, cost_column = "cost", rij = puvsp_dat85) %>%
   add_min_set_objective() %>% # Minimize the cost, targets are met
@@ -1168,9 +1168,9 @@ head(sr85r)
 
 # RANDOM
 # 90
-pu_dat90 <- read.csv("~/GRP GAZP Dropbox/Emma Ladouceur/_Projects/Marxan/Data/Random/90/pu.csv",header=T,fill=TRUE,sep=",",na.strings=c(""," ","NA","NA ","na"))
-spec_r90 <- read.csv("~/GRP GAZP Dropbox/Emma Ladouceur/_Projects/Marxan/Data/Random/90/spec.csv",header=T,fill=TRUE,sep=",",na.strings=c(""," ","NA","NA ","na"))
-puvsp_dat90 <- read.csv("~/GRP GAZP Dropbox/Emma Ladouceur/_Projects/Marxan/Data/Random/90/puvsp.csv",header=T,fill=TRUE,sep=",",na.strings=c(""," ","NA","NA ","na"))
+pu_dat90 <- read.csv("/InputData/Random/90/pu.csv",header=T,fill=TRUE,sep=",",na.strings=c(""," ","NA","NA ","na"))
+spec_r90 <- read.csv("/InputData/Random/90/spec.csv",header=T,fill=TRUE,sep=",",na.strings=c(""," ","NA","NA ","na"))
+puvsp_dat90 <- read.csv("/InputData/Random/90/puvsp.csv",header=T,fill=TRUE,sep=",",na.strings=c(""," ","NA","NA ","na"))
 
 rp90 <- problem(pu_dat90, spec_r90, cost_column = "cost", rij = puvsp_dat90) %>%
   add_min_set_objective() %>% # Minimize the cost, targets are met
@@ -1212,9 +1212,9 @@ head(sr90r)
 
 # RANDOM
 # 95
-pu_dat95 <- read.csv("~/GRP GAZP Dropbox/Emma Ladouceur/_Projects/Marxan/Data/Random/95/pu.csv",header=T,fill=TRUE,sep=",",na.strings=c(""," ","NA","NA ","na"))
-spec_r95 <- read.csv("~/GRP GAZP Dropbox/Emma Ladouceur/_Projects/Marxan/Data/Random/95/spec.csv",header=T,fill=TRUE,sep=",",na.strings=c(""," ","NA","NA ","na"))
-puvsp_dat95 <- read.csv("~/GRP GAZP Dropbox/Emma Ladouceur/_Projects/Marxan/Data/Random/95/puvsp.csv",header=T,fill=TRUE,sep=",",na.strings=c(""," ","NA","NA ","na"))
+pu_dat95 <- read.csv("/InputData/Random/95/pu.csv",header=T,fill=TRUE,sep=",",na.strings=c(""," ","NA","NA ","na"))
+spec_r95 <- read.csv("/InputData/Random/95/spec.csv",header=T,fill=TRUE,sep=",",na.strings=c(""," ","NA","NA ","na"))
+puvsp_dat95 <- read.csv("/InputData/Random/95/puvsp.csv",header=T,fill=TRUE,sep=",",na.strings=c(""," ","NA","NA ","na"))
 
 rp95 <- problem(pu_dat95, spec_r95, cost_column = "cost", rij = puvsp_dat95) %>%
   add_min_set_objective() %>% # Minimize the cost, targets are met
@@ -1256,9 +1256,9 @@ head(sr95r)
 
 # RANDOM
 # 100
-pu_dat100 <- read.csv("~/GRP GAZP Dropbox/Emma Ladouceur/_Projects/Marxan/Data/Random/100/pu.csv",header=T,fill=TRUE,sep=",",na.strings=c(""," ","NA","NA ","na"))
-spec_r100 <- read.csv("~/GRP GAZP Dropbox/Emma Ladouceur/_Projects/Marxan/Data/Random/100/spec.csv",header=T,fill=TRUE,sep=",",na.strings=c(""," ","NA","NA ","na"))
-puvsp_dat100 <- read.csv("~/GRP GAZP Dropbox/Emma Ladouceur/_Projects/Marxan/Data/Random/100/puvsp.csv",header=T,fill=TRUE,sep=",",na.strings=c(""," ","NA","NA ","na"))
+pu_dat100 <- read.csv("/InputData/Random/100/pu.csv",header=T,fill=TRUE,sep=",",na.strings=c(""," ","NA","NA ","na"))
+spec_r100 <- read.csv("/InputData/Random/100/spec.csv",header=T,fill=TRUE,sep=",",na.strings=c(""," ","NA","NA ","na"))
+puvsp_dat100 <- read.csv("/InputData/Random/100/puvsp.csv",header=T,fill=TRUE,sep=",",na.strings=c(""," ","NA","NA ","na"))
 
 rp100 <- problem(pu_dat100, spec_r100, cost_column = "cost", rij = puvsp_dat100) %>%
   add_min_set_objective() %>% # Minimize the cost, targets are met
@@ -1300,9 +1300,9 @@ head(sr100r)
 
 # RANDOM
 # 105
-pu_dat105 <- read.csv("~/GRP GAZP Dropbox/Emma Ladouceur/_Projects/Marxan/Data/Random/105/pu.csv",header=T,fill=TRUE,sep=",",na.strings=c(""," ","NA","NA ","na"))
-spec_r105 <- read.csv("~/GRP GAZP Dropbox/Emma Ladouceur/_Projects/Marxan/Data/Random/105/spec.csv",header=T,fill=TRUE,sep=",",na.strings=c(""," ","NA","NA ","na"))
-puvsp_dat105 <- read.csv("~/GRP GAZP Dropbox/Emma Ladouceur/_Projects/Marxan/Data/Random/105/puvsp.csv",header=T,fill=TRUE,sep=",",na.strings=c(""," ","NA","NA ","na"))
+pu_dat105 <- read.csv("/InputData/Random/105/pu.csv",header=T,fill=TRUE,sep=",",na.strings=c(""," ","NA","NA ","na"))
+spec_r105 <- read.csv("/InputData/Random/105/spec.csv",header=T,fill=TRUE,sep=",",na.strings=c(""," ","NA","NA ","na"))
+puvsp_dat105 <- read.csv("/InputData/Random/105/puvsp.csv",header=T,fill=TRUE,sep=",",na.strings=c(""," ","NA","NA ","na"))
 
 rp105 <- problem(pu_dat105, spec_r105, cost_column = "cost", rij = puvsp_dat105) %>%
   add_min_set_objective() %>% # Minimize the cost, targets are met
@@ -1345,9 +1345,9 @@ head(sr105r)
 
 # RANDOM
 # 110
-pu_dat110 <- read.csv("~/GRP GAZP Dropbox/Emma Ladouceur/_Projects/Marxan/Data/Random/110/pu.csv",header=T,fill=TRUE,sep=",",na.strings=c(""," ","NA","NA ","na"))
-spec_r110 <- read.csv("~/GRP GAZP Dropbox/Emma Ladouceur/_Projects/Marxan/Data/Random/110/spec.csv",header=T,fill=TRUE,sep=",",na.strings=c(""," ","NA","NA ","na"))
-puvsp_dat110 <- read.csv("~/GRP GAZP Dropbox/Emma Ladouceur/_Projects/Marxan/Data/Random/110/puvsp.csv",header=T,fill=TRUE,sep=",",na.strings=c(""," ","NA","NA ","na"))
+pu_dat110 <- read.csv("/InputData/Random/110/pu.csv",header=T,fill=TRUE,sep=",",na.strings=c(""," ","NA","NA ","na"))
+spec_r110 <- read.csv("/InputData/Random/110/spec.csv",header=T,fill=TRUE,sep=",",na.strings=c(""," ","NA","NA ","na"))
+puvsp_dat110 <- read.csv("/InputData/Random/110/puvsp.csv",header=T,fill=TRUE,sep=",",na.strings=c(""," ","NA","NA ","na"))
 
 rp110 <- problem(pu_dat110, spec_r110, cost_column = "cost", rij = puvsp_dat110) %>%
   add_min_set_objective() %>% # Minimize the cost, targets are met
@@ -1389,9 +1389,9 @@ head(sr110r)
 
 # RANDOM
 # 115
-pu_dat115 <- read.csv("~/GRP GAZP Dropbox/Emma Ladouceur/_Projects/Marxan/Data/Random/115/pu.csv",header=T,fill=TRUE,sep=",",na.strings=c(""," ","NA","NA ","na"))
-spec_r115 <- read.csv("~/GRP GAZP Dropbox/Emma Ladouceur/_Projects/Marxan/Data/Random/115/spec.csv",header=T,fill=TRUE,sep=",",na.strings=c(""," ","NA","NA ","na"))
-puvsp_dat115 <- read.csv("~/GRP GAZP Dropbox/Emma Ladouceur/_Projects/Marxan/Data/Random/115/puvsp.csv",header=T,fill=TRUE,sep=",",na.strings=c(""," ","NA","NA ","na"))
+pu_dat115 <- read.csv("/InputData/Random/115/pu.csv",header=T,fill=TRUE,sep=",",na.strings=c(""," ","NA","NA ","na"))
+spec_r115 <- read.csv("/InputData/Random/115/spec.csv",header=T,fill=TRUE,sep=",",na.strings=c(""," ","NA","NA ","na"))
+puvsp_dat115 <- read.csv("/InputData/Random/115/puvsp.csv",header=T,fill=TRUE,sep=",",na.strings=c(""," ","NA","NA ","na"))
 
 rp115 <- problem(pu_dat115, spec_r115, cost_column = "cost", rij = puvsp_dat115) %>%
   add_min_set_objective() %>% # Minimize the cost, targets are met
@@ -1433,9 +1433,9 @@ head(sr115r)
 
 # RANDOM
 # 120
-pu_dat120 <- read.csv("~/GRP GAZP Dropbox/Emma Ladouceur/_Projects/Marxan/Data/Random/120/pu.csv",header=T,fill=TRUE,sep=",",na.strings=c(""," ","NA","NA ","na"))
-spec_r120 <- read.csv("~/GRP GAZP Dropbox/Emma Ladouceur/_Projects/Marxan/Data/Random/120/spec.csv",header=T,fill=TRUE,sep=",",na.strings=c(""," ","NA","NA ","na"))
-puvsp_dat120 <- read.csv("~/GRP GAZP Dropbox/Emma Ladouceur/_Projects/Marxan/Data/Random/120/puvsp.csv",header=T,fill=TRUE,sep=",",na.strings=c(""," ","NA","NA ","na"))
+pu_dat120 <- read.csv("/InputData/Random/120/pu.csv",header=T,fill=TRUE,sep=",",na.strings=c(""," ","NA","NA ","na"))
+spec_r120 <- read.csv("/InputData/Random/120/spec.csv",header=T,fill=TRUE,sep=",",na.strings=c(""," ","NA","NA ","na"))
+puvsp_dat120 <- read.csv("/InputData/Random/120/puvsp.csv",header=T,fill=TRUE,sep=",",na.strings=c(""," ","NA","NA ","na"))
 
 rp120 <- problem(pu_dat120, spec_r120, cost_column = "cost", rij = puvsp_dat120) %>%
   add_min_set_objective() %>% # Minimize the cost, targets are met
@@ -1477,9 +1477,9 @@ head(sr120r)
 
 # RANDOM
 # 125
-pu_dat125 <- read.csv("~/GRP GAZP Dropbox/Emma Ladouceur/_Projects/Marxan/Data/Random/125/pu.csv",header=T,fill=TRUE,sep=",",na.strings=c(""," ","NA","NA ","na"))
-spec_r125 <- read.csv("~/GRP GAZP Dropbox/Emma Ladouceur/_Projects/Marxan/Data/Random/125/spec.csv",header=T,fill=TRUE,sep=",",na.strings=c(""," ","NA","NA ","na"))
-puvsp_dat125 <- read.csv("~/GRP GAZP Dropbox/Emma Ladouceur/_Projects/Marxan/Data/Random/125/puvsp.csv",header=T,fill=TRUE,sep=",",na.strings=c(""," ","NA","NA ","na"))
+pu_dat125 <- read.csv("/InputData/Random/125/pu.csv",header=T,fill=TRUE,sep=",",na.strings=c(""," ","NA","NA ","na"))
+spec_r125 <- read.csv("/InputData/Random/125/spec.csv",header=T,fill=TRUE,sep=",",na.strings=c(""," ","NA","NA ","na"))
+puvsp_dat125 <- read.csv("/InputData/Random/125/puvsp.csv",header=T,fill=TRUE,sep=",",na.strings=c(""," ","NA","NA ","na"))
 
 rp125 <- problem(pu_dat125, spec_r125, cost_column = "cost", rij = puvsp_dat125) %>%
   add_min_set_objective() %>% # Minimize the cost, targets are met
@@ -1528,7 +1528,7 @@ head(sr125r)
 # Objective Features
 objective.features <- bind_rows(compr,bflyr,birdr,domr,prichfr,prichgr,pwfr,pwgr)
 head(objective.features)
-write.csv(objective.features,"~/GRP GAZP Dropbox/Emma Ladouceur/_Projects/Marxan/Data/objective.features.csv")
+write.csv(objective.features,"/OutputData/objective.features.csv")
 
 # Random Features 
 random.features <- bind_rows(sr5r,sr10r,sr15r,sr20r,sr25r,sr30r,sr35r,sr40r,sr45r,sr50r,sr55r,sr60r,sr65r,sr70r,sr75r,sr80r,sr85r,sr90r,sr95r,sr100r,sr105r,sr110r,sr115r,sr120r,sr125r)
@@ -1536,7 +1536,7 @@ random.features <- bind_rows(sr5r,sr10r,sr15r,sr20r,sr25r,sr30r,sr35r,sr40r,sr45
 
 head(random.features)
 
-write.csv(random.features,"~/GRP GAZP Dropbox/Emma Ladouceur/_Projects/Marxan/Data/random.features.csv")
+write.csv(random.features,"/OutputData/random.features.csv")
 
 
 # objective features +  random features = master features
@@ -1546,25 +1546,25 @@ head(master.features)
 dmf <- distinct(master.features,objective, species)
 dmf
 
-write.csv(master.features,"~/GRP GAZP Dropbox/Emma Ladouceur/_Projects/Marxan/Data/master.features.csv")
+write.csv(master.features,"/OutputData/master.features.csv")
 
 #  Data for Figure 1
 random_dat <- bind_rows(sr5_s,sr10_s,sr15_s,sr20_s,sr25_s,sr30_s,sr35_s,sr40_s,sr45_s,sr50_s,sr55_s,sr60_s,sr65_s,sr70_s,sr75_s,sr80_s,sr85_s,sr90_s,sr95_s,sr100_s,sr105_s,sr110_s,sr115_s,sr120_s,sr125_s)
 
 head(random_dat)
 
-write.csv(random_dat,"~/GRP GAZP Dropbox/Emma Ladouceur/_Projects/Marxan/Data/random_dat.csv")
+write.csv(random_dat,"/OutputData/random_dat.csv")
 
 objective_dat <- bind_rows(comp_s,bfly_s,bird_s,dom_s,prichf_s,prichg_s,pwf_s,pwg_s) 
 
 head(objective_dat)
 
-write.csv(objective_dat,"~/GRP GAZP Dropbox/Emma Ladouceur/_Projects/Marxan/Data/solution_dat.csv")
+write.csv(objective_dat,"/OutputData/solution_dat.csv")
 
 
 
 # Figure 4 & Figure S2
-master.features <- read.csv("~/GRP GAZP Dropbox/Emma Ladouceur/_Projects/Marxan/Data/master.features.csv",header=T,fill=TRUE,sep=",",na.strings=c(""," ","NA","NA ","na"))
+master.features <- read.csv("/OutputData/master.features.csv",header=T,fill=TRUE,sep=",",na.strings=c(""," ","NA","NA ","na"))
 head(master.features)
 
 distinct(master.features,objective, species)
@@ -1585,7 +1585,7 @@ ob.feats <-  master.features %>%  filter( !objective == "Random") %>%
 
 head(ob.feats)
 
-write.csv(ob.feats,"~/GRP GAZP Dropbox/Emma Ladouceur/_Projects/Marxan/Data/objective_features2.csv")
+write.csv(ob.feats,"/OutputData/objective_features2.csv")
 
 ob.feats$pres<-as.numeric(ob.feats$pres)
 ob.feats$value<-as.numeric(ob.feats$value)
@@ -1601,7 +1601,7 @@ summ.feats<- ob.feats %>% group_by(category, objective, solution, species) %>%
 summ.feats$category <-as.factor(as.character(summ.feats$category))
 levels(summ.feats$category)
 
-write.csv(summ.feats,"~/GRP GAZP Dropbox/Emma Ladouceur/_Projects/Marxan/Data/summary_objective_features.csv")
+write.csv(summ.feats,"/OutputData/summary_objective_features.csv")
 
 random.features$species <- as.numeric(random.features$species)
 
@@ -1616,7 +1616,7 @@ random.feat <- master.features %>% filter( objective == "Random") %>% # change t
 
 head(random.feat)
 
-write.csv(random.feat,"~/GRP GAZP Dropbox/Emma Ladouceur/_Projects/Marxan/Data/random_features2.csv")
+write.csv(random.feat,"/OutputData/random_features2.csv")
 
 random.feat$pres<-as.numeric(random.feat$pres)
 random.feat$value<-as.numeric(random.feat$value)
@@ -1636,7 +1636,7 @@ random.summ.feats <- random.summ.feats %>%
   droplevels()
 
 head(random.summ.feats)
-write.csv(random.summ.feats,"~/GRP GAZP Dropbox/Emma Ladouceur/_Projects/Marxan/Data/summary_random_features.csv")
+write.csv(random.summ.feats,"/OutputData/summary_random_features.csv")
 
 
 random.summ.feat<- random.summ.feats %>% group_by(category, objective, species) %>%
@@ -1646,7 +1646,7 @@ random.summ.feat<- random.summ.feats %>% group_by(category, objective, species) 
 
 head(random.summ.feat)
 
-write.csv(random.summ.feat,"~/GRP GAZP Dropbox/Emma Ladouceur/_Projects/Marxan/Data/summary_random_features2.csv")
+write.csv(random.summ.feat,"/OutputData/summary_random_features2.csv")
 
 
 
@@ -1654,9 +1654,9 @@ write.csv(random.summ.feat,"~/GRP GAZP Dropbox/Emma Ladouceur/_Projects/Marxan/D
 
 # Table S1
 
-master_new <- read.csv("~/GRP GAZP Dropbox/Emma Ladouceur/_Projects/Marxan/Data/master_new.csv")
+master_new <- read.csv("/OutputData/master_new.csv")
 
-master_dat <- read.csv("~/GRP GAZP Dropbox/Emma Ladouceur/_Projects/Marxan/Data/master_dat.csv",header=T,fill=TRUE,sep=",",na.strings=c(""," ","NA","NA ","na"))
+master_dat <- read.csv("/OutputData/master_dat.csv",header=T,fill=TRUE,sep=",",na.strings=c(""," ","NA","NA ","na"))
 
 
 head(master_dat)
@@ -1685,7 +1685,7 @@ head(master_dat2)
 
 
 # add solution 1
-solution_dat <- read.csv("~/GRP GAZP Dropbox/Emma Ladouceur/_Projects/Marxan/Data/solution_dat.csv",header=T,fill=TRUE,sep=",",na.strings=c(""," ","NA","NA ","na"))
+solution_dat <- read.csv("/OutputData/solution_dat.csv",header=T,fill=TRUE,sep=",",na.strings=c(""," ","NA","NA ","na"))
 
 head(solution_dat)
 
@@ -1704,7 +1704,7 @@ master_dat3 <- master_dat2 %>% left_join(s_dat, by =("s"))
 colnames(master_dat3)
 
 
-write.csv(master_dat3, "~/GRP GAZP Dropbox/Emma Ladouceur/_Projects/Marxan/3_Table S1_new.csv")
+write.csv(master_dat3, "/OutputData/3_Table_S1.csv")
 
 
 

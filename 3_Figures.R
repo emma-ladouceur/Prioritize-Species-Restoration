@@ -12,9 +12,12 @@ library(tidyverse)
 library(ggplot2)
 library(viridis)
 
+# set working directory
+setwd("~/Dropbox/Projects/Prioritizr/Data/")
+
 # data
-solution_dat <- read.csv("~/GRP GAZP Dropbox/Emma Ladouceur/_Projects/Marxan/Data/solution_dat.csv",header=T,fill=TRUE,sep=",",na.strings=c(""," ","NA","NA ","na"))
-random_dat <- read.csv("~/GRP GAZP Dropbox/Emma Ladouceur/_Projects/Marxan/Data/random_dat.csv",header=T,fill=TRUE,sep=",",na.strings=c(""," ","NA","NA ","na"))
+solution_dat <- read.csv("/OutputData/solution_dat.csv",header=T,fill=TRUE,sep=",",na.strings=c(""," ","NA","NA ","na"))
+random_dat <- read.csv("/OutputData/random_dat.csv",header=T,fill=TRUE,sep=",",na.strings=c(""," ","NA","NA ","na"))
 
 master_dat<-bind_rows(solution_dat,random_dat)
 
@@ -140,8 +143,8 @@ ggplot(importance_dat,aes(x=Importance, y=totalcf,color=Importance),alpha=0.6,do
 
 # FIGURE 5
 # MIXED LAYERS CLOUD + RANDOM MEAN + QUANTILES 
-edata<- read.table("~/GRP GAZP Dropbox/Emma Ladouceur/_Projects/Marxan/Data/summary_objective_features.csv",header=T,fill=TRUE,sep=",",na.strings=c(""," ","NA","NA ","na"))
-rdata<- read.table("~/GRP GAZP Dropbox/Emma Ladouceur/_Projects/Marxan/Data/summary_random_features2.csv",header=T,fill=TRUE,sep=",",na.strings=c(""," ","NA","NA ","na"))
+edata<- read.table("/OutputData/summary_objective_features.csv",header=T,fill=TRUE,sep=",",na.strings=c(""," ","NA","NA ","na"))
+rdata<- read.table("/OutputData/summary_random_features2.csv",header=T,fill=TRUE,sep=",",na.strings=c(""," ","NA","NA ","na"))
 
 rdata.l <- rdata %>% gather(quantile,percent_targs,mean.held:upper.held)
 
@@ -170,7 +173,7 @@ ggplot() +
 
 
 # Figure S2 : Random Cloud
-pdata <- read.table("~/GRP GAZP Dropbox/Emma Ladouceur/_Projects/Marxan/Data/summary_random_features.csv",header=T,fill=TRUE,sep=",",na.strings=c(""," ","NA","NA ","na"))
+pdata <- read.table("/OutputData/summary_random_features.csv",header=T,fill=TRUE,sep=",",na.strings=c(""," ","NA","NA ","na"))
 
 head(pdata)
 pdata$category <- as.factor(pdata$category)

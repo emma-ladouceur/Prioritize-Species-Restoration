@@ -3,7 +3,7 @@
 
 Prioritizing plant species for seed or planting mixes in terrestrial ecological restoration. This method can be performed in R, using the [prioritizr](https://prioritizr.net/) package, *AND* can also be performed in [MARXAN](https://marxansolutions.org/). Here, we use the prioritizr package to efficiently find the smallest number of plant species that met the target based-objectives in restoration treatment species mixes.  We used the ‘minimum-set’ problem formulation which is commonly applied to spatially-explicit decision making that cost-efficiently meet targets for conservation features (e.g. habitats, species ranges, or ecological processes), and apply it to our non-spatial problem; what are the minimum number of plant species that can meet each objective?.
 
-Emma Ladouceur, Jennifer McGowan, Patrick Huber, Hugh Possingham, Davide Scridel, Roel van Klink, Peter Poschlod1, J. Hans C. Cornelissen, Costantino Bonomi, Borja Jiménez-Alfaro. (2021) An objective-based prioritization approach to support trophic complexity through ecological restoration species mixes Journal of Applied Ecology. Article DOI: & Data DOI: 
+Emma Ladouceur, Jennifer McGowan, Patrick Huber, Hugh Possingham, Davide Scridel, Roel van Klink, Peter Poschlod1, J. Hans C. Cornelissen, Costantino Bonomi, Borja Jiménez-Alfaro. (2021) An objective-based prioritization approach to support trophic complexity through ecological restoration species mixes. Journal of Applied Ecology. Article DOI: & Data DOI: 
 
 Below we detail the datasets and code provided to replicate this method.
 
@@ -35,4 +35,4 @@ This method can be performed in R, using the [prioritizr](https://prioritizr.net
 **3_Figures.R** This script produces all figures for the associated paper.
 
 
-Emma Ladouceur, Jennifer McGowan, Patrick Huber, Hugh Possingham, Davide Scridel, Roel van Klink, Peter Poschlod1, J. Hans C. Cornelissen, Costantino Bonomi, Borja Jiménez-Alfaro. (2021) An objective-based prioritization approach to support trophic complexity through ecological restoration species mixes Journal of Applied Ecology. DOI:
+Emma Ladouceur, Jennifer McGowan, Patrick Huber, Hugh Possingham, Davide Scridel, Roel van Klink, Peter Poschlod1, J. Hans C. Cornelissen, Costantino Bonomi, Borja Jiménez-Alfaro. (2021) An objective-based prioritization approach to support trophic complexity through ecological restoration species mixes. Journal of Applied Ecology. DOI:
