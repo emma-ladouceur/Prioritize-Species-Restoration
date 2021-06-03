@@ -19,7 +19,7 @@ setwd("~/Dropbox/Projects/Prioritizr/Data/")
 solution_dat <- read.csv("/OutputData/solution_dat.csv",header=T,fill=TRUE,sep=",",na.strings=c(""," ","NA","NA ","na"))
 random_dat <- read.csv("/OutputData/random_dat.csv",header=T,fill=TRUE,sep=",",na.strings=c(""," ","NA","NA ","na"))
 
-master_dat<-bind_rows(solution_dat,random_dat)
+master_dat <- bind_rows(solution_dat,random_dat)
 
 head(master_dat)
 
@@ -38,9 +38,6 @@ dat1$objective <- factor(dat1$objective, levels=c("Bird (n=5)","Plant Rich Famil
 # alternative ordering
 dat1$objective <- factor(dat1$objective, levels=c( "Comprehensive (n=37)", "Bird (n=5)","Lepidoptera Relationship (n=35)", "Pairwise Lepidoptera + Plant Rich Family (n=47)" ,"Pairwise Lepidoptera + Plant Rich Genus (n=119)",
                                                   "Dominants (n=37)",  "Plant Rich Family (n=34)", "Plant Rich Genus (n=115)", "Random"))
-#alt color orders
-# scale_color_manual(values=c("#D95F02","#E7298A","#7570B3","#16A08CFF", "#1F78B4","#66A61E","#E6AB02","#15983DFF","#666666")) +
-#   scale_fill_manual(values=c("#D95F02","#E7298A","#7570B3","#16A08CFF", "#1F78B4","#66A61E","#E6AB02","#15983DFF","#666666")) +
 
 ggplot(dat1,aes(x=objective, y=totalcf, color=objective),alpha=0.6,dotsize=0.5) + 
   geom_violin(aes(color = NA, fill=objective), alpha=0.4,trim = FALSE,color=NA) +
@@ -96,8 +93,6 @@ ggplot(dat2,aes(x=solution_amount, y=totalcf, color=objective),alpha=0.6,dotsize
   stat_summary(fun.data="mean_sdl",  fun.args = list(mult=1), 
                fun.y=mean, geom="pointrange", size=0.6,  fill="black",color="black",alpha=0.6) + 
   labs(x = 'Number of plant species',y = 'Attribute Sum',fill='Objective',color='Objective') + 
-  # scale_color_manual(values=c("#E7298A","#66A61E","#7570B3","#D95F02","#E6AB02","#16A08CFF" ,"#15983DFF","#1F78B4","#666666")) +
-  # scale_fill_manual(values=c("#E7298A","#66A61E","#7570B3","#D95F02","#E6AB02","#16A08CFF" ,"#15983DFF","#1F78B4","#666666")) +
   scale_color_manual(values=c("#D95F02","#E7298A","#7570B3","#16A08CFF", "#1F78B4","#E6AB02","#66A61E","#15983DFF","#666666")) +
   scale_fill_manual(values=c("#D95F02","#E7298A","#7570B3","#16A08CFF", "#1F78B4","#E6AB02","#66A61E","#15983DFF","#666666")) +
   theme_classic() + theme(legend.position="bottom",
@@ -115,8 +110,6 @@ importance_dat <- master_dat %>%  mutate( Importance = ifelse(master_dat$sf == 0
   group_by(id,objective) %>%
   filter(solution_n == "solution_1") %>% filter(!objective == "Random")
 
-
-#importance_dat$objective <- factor(importance_dat$objective, levels=c("Bird (n=5)","Plant Rich Family (n=34)","Lepidoptera Relationship (n=35)", "Comprehensive (n=37)", "Dominants (n=37)",  "Pairwise Lepidoptera + Plant Rich Family (n=47)" , "Plant Rich Genus (n=115)","Pairwise Lepidoptera + Plant Rich Genus (n=119)"))
 
 importance_dat$objective <- factor(importance_dat$objective, levels=c( "Comprehensive (n=37)", "Bird (n=5)","Lepidoptera Relationship (n=35)", "Pairwise Lepidoptera + Plant Rich Family (n=47)" ,"Pairwise Lepidoptera + Plant Rich Genus (n=119)",
                                                    "Dominants (n=37)",  "Plant Rich Family (n=34)", "Plant Rich Genus (n=115)"))
@@ -151,8 +144,6 @@ rdata.l <- rdata %>% gather(quantile,percent_targs,mean.held:upper.held)
 rdata.l$category <- factor(rdata.l$category, levels=c( "Bird Trophic","Bird Herbivory", "Bird Shelter", "Dispersal Syndrome", "Lepidoptera Pollinator", "Lepidoptera Herbivory","Pollination Syndrome", "Mammal Herbivory", "Nitrogen Fixation", "Flowering Month","Plant Rich Genus","Plant Rich Family"))
 
 edata$category <- factor(edata$category, levels=c( "Bird Trophic","Bird Herbivory", "Bird Shelter", "Dispersal Syndrome",  "Lepidoptera Pollinator", "Lepidoptera Herbivory","Pollination Syndrome", "Mammal Herbivory", "Nitrogen Fixation", "Flowering Month","Plant Rich Genus","Plant Rich Family"))
-
-#edata$objective <- factor(edata$objective, levels=c("Bird (n=5)","Plant Rich Family (n=34)","Lepidoptera Relationship (n=35)", "Comprehensive (n=37)", "Dominants (n=37)","Pairwise Lepidoptera + Plant Rich Family (n=47)" , "Plant Rich Genus (n=115)","Pairwise Lepidoptera + Plant Rich Genus (n=119)", "Random"))
 
 edata$objective <- factor(edata$objective, levels=c( "Comprehensive (n=37)", "Bird (n=5)","Lepidoptera Relationship (n=35)", "Pairwise Lepidoptera + Plant Rich Family (n=47)" ,"Pairwise Lepidoptera + Plant Rich Genus (n=119)",
                                                                        "Dominants (n=37)",  "Plant Rich Family (n=34)", "Plant Rich Genus (n=115)", "Random"))
