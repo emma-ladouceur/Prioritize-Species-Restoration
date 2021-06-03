@@ -10,7 +10,7 @@ Below we detail the datasets and code provided to replicate this method.
 ### Data
 All that is really needed for this analysis is a plant species list of appropriate species from the regional species pool, appropriate for the target habitat for use in a restoration species mix, and a list of associated plant traits, or attributes associated with those plant species, to form a plant species-trait matrix. The next step is to get the data into the right format for analysis. There are multiple options for this data formatting, and here we take the approach to data formatting that can also be used in MARXAN. The data unique to  each objective is provided in this format. Methods for formatting data for these  applications is well-documented for each software platform mentioned here, and adapting these formats to this non-spatial application is detailed in the supplementary information of this paper. 
 
-**Table_S1.csv** These data are the total plant species-attribute matrix used for this analysis. Each objective is broken into different datasets tailed to each objective we create. These are in separate folders, named intuitively, detailed below.
+**Table_S1.csv** These data are the total plant species-attribute matrix used for this analysis. This dataset is provided with the paper as an Appendix, but is not used for analysis. Each objective is broken into different datasets tailored to each objective we set targets for and solve. These are in separate folders, named intuitively, detailed below.
 
 #### Folders
 Each folder contains the following data for each objective. Each folder is named intuitively after each objective.
@@ -31,7 +31,7 @@ This method can be performed in R, using the [prioritizr](https://prioritizr.net
 
 **1_puvssp_wrangle.csv** This wrangled data is already provided for you, but this wrangle script is provided to demonstrate how to get data into required formats. This just converts *puvsp_w.csv* into *puvsp.csv* 
 
-**2_problems_solutions.R** This script takes data for each objective, creates prioritizr problems, and solves to create solutions for this paper. Data is then wrangled into formats needed for analysis and Figures. This create data provided in the folder *OutputData*
+**2_problems_solutions.R** This script takes data for each objective, creates prioritizr problems, and solves to create solutions for this paper. Data is then wrangled into formats needed for analysis and Figures. This creates data provided in the folder *OutputData*
 
 **3_Figures.R** This script produces all figures for the associated paper.
 
